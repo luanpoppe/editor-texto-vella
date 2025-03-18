@@ -8,9 +8,29 @@ import {
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 import { getChatGPTAnswer } from "../utils/openAI";
+import { BarraDeOpcoes } from "./BarraDeOpcoes";
+import Underline from "@tiptap/extension-underline";
+import Link from "@tiptap/extension-link";
+import TextStyle from "@tiptap/extension-text-style";
+import Color from "@tiptap/extension-color";
+import Typography from "@tiptap/extension-typography";
+import { FontSize } from "../utils/customFontSizeExtension";
+import TextAlign from "@tiptap/extension-text-align";
 
 // define your extension array
-const extensions = [StarterKit];
+const extensions = [
+  StarterKit,
+  Underline,
+  Link,
+  TextStyle,
+  Color,
+  Typography,
+  FontSize,
+  TextAlign.configure({
+    types: ["heading", "paragraph"],
+    defaultAlignment: "left",
+  }),
+];
 
 const content = "<h1>olá meu pcero</h1>";
 
@@ -19,7 +39,7 @@ const Tiptap = () => {
     <EditorProvider
       extensions={extensions}
       content={content}
-      slotBefore={<Outro />}
+      slotBefore={<BarraDeOpcoes />}
       onUpdate={(e) => console.log(e)}
     >
       <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
@@ -29,13 +49,6 @@ const Tiptap = () => {
 };
 
 export default Tiptap;
-
-export function Outro() {
-  const { editor } = useCurrentEditor();
-  const hue = editor.getJSON();
-  // console.log("hue: ", hue);
-  return <div>OPAAAAAAAAAAAA</div>;
-}
 
 export function BubbleMenuWithEditor() {
   const { editor } = useCurrentEditor();
