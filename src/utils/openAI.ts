@@ -8,7 +8,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-export async function getChatGPTAnswer(texto) {
+export async function getChatGPTAnswer(texto: string) {
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",

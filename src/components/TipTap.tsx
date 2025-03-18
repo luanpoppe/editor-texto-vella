@@ -6,16 +6,16 @@ import {
   useCurrentEditor,
 } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useEffect } from "react";
-import { getChatGPTAnswer } from "../utils/openAI";
-import { BarraDeOpcoes } from "./BarraDeOpcoes/BarraDeOpcoes";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import Typography from "@tiptap/extension-typography";
-import { FontSize } from "../utils/customFontSizeExtension";
+
 import TextAlign from "@tiptap/extension-text-align";
+import { getChatGPTAnswer } from "@/utils/openAI";
+import FontSize from "@/utils/customFontSizeExtension";
+import { BarraDeOpcoes } from "./BarraDeOpcoes/BarraDeOpcoes";
 
 // define your extension array
 const extensions = [
@@ -64,6 +64,7 @@ export default Tiptap;
 
 export function BubbleMenuWithEditor() {
   const { editor } = useCurrentEditor();
+  if (!editor) return;
 
   return (
     <BubbleMenu editor={null}>

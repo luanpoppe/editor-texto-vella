@@ -8,12 +8,13 @@ import {
   FaListOl,
   FaListUl,
 } from "react-icons/fa6";
-import { SelectFontSize } from "./SelectFontSize";
 import { BotaoBarraDeOpcoes } from "./BotaoBarraDeOpcoes";
+import { SelectFontSize } from "./SelectFontSize";
 import { SelectHeadings } from "./SelectHeading";
 
 export function BarraDeOpcoes() {
   const { editor } = useCurrentEditor();
+  if (!editor) return;
   const toggleBold = toggleFormatacao(editor, "toggleBold");
   const toggleItalic = toggleFormatacao(editor, "toggleItalic");
   const toggleUnderline = toggleFormatacao(editor, "toggleUnderline");
@@ -21,7 +22,7 @@ export function BarraDeOpcoes() {
   const toggleBulletList = toggleFormatacao(editor, "toggleBulletList");
   const toggleOrderedList = toggleFormatacao(editor, "toggleOrderedList");
 
-  const setTextAlign = (posicao) =>
+  const setTextAlign = (posicao: string) =>
     toggleFormatacao(editor, "setTextAlign", posicao);
 
   const horizontalRow = toggleFormatacao(editor, "setHorizontalRule");

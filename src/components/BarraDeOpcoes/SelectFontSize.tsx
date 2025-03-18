@@ -7,10 +7,12 @@ export function SelectFontSize() {
   const [showOptions, setShowOptions] = useState(false);
   const [fontSizeState, setFontSizeState] = useState("16px");
   const { editor } = useCurrentEditor();
-  const setFontSize = (tamanho) =>
+  if (!editor) return;
+
+  const setFontSize = (tamanho: string) =>
     toggleFormatacao(editor, "setFontSize", tamanho);
 
-  function changeFontSize(fontSize) {
+  function changeFontSize(fontSize: string) {
     setShowOptions(false);
     setFontSizeState(fontSize);
     setFontSize(fontSize)();

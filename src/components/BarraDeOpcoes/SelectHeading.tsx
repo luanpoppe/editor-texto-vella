@@ -7,11 +7,12 @@ export function SelectHeadings() {
   const [showOptions, setShowOptions] = useState(false);
   const [fontSizeState, setFontSizeState] = useState("16px");
   const { editor } = useCurrentEditor();
+  if (!editor) return;
 
-  const toggleHeading = (level) =>
+  const toggleHeading = (level: number) =>
     toggleFormatacao(editor, "toggleHeading", { level });
 
-  function changeHeading(level) {
+  function changeHeading(level: number) {
     setShowOptions(false);
     // setFontSizeState(fontSize);
     toggleHeading(level)();
