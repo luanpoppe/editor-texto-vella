@@ -1,47 +1,3 @@
-// import { Mark, mergeAttributes } from "@tiptap/core";
-
-// export const FontSize = Mark.create({
-//   name: "fontSize",
-
-//   addAttributes() {
-//     return {
-//       size: {
-//         default: null,
-//         parseHTML: (element) => element.style.fontSize.replace("px", ""),
-//         renderHTML: (attributes) => {
-//           if (!attributes.size) return {};
-//           return { style: `font-size: ${attributes.size}px` };
-//         },
-//       },
-//     };
-//   },
-
-//   parseHTML() {
-//     return [{ tag: "span[style]" }];
-//   },
-
-//   renderHTML({ attributes }) {
-//     return ["span", mergeAttributes(attributes), 0];
-//   },
-
-//   addCommands() {
-//     return {
-//       setFontSize:
-//         (size) =>
-//         ({ chain }) => {
-//           console.log("size: ", size);
-
-//           return chain().setMark(this.name, { size }).run();
-//         },
-//       unsetFontSize:
-//         () =>
-//         ({ chain }) => {
-//           return chain().unsetMark(this.name).run();
-//         },
-//     };
-//   },
-// });
-
 import { Extension } from "@tiptap/core";
 import "@tiptap/extension-text-style";
 
@@ -86,12 +42,13 @@ export const FontSize = Extension.create({
   addCommands() {
     return {
       setFontSize:
-        (fontSize) =>
-        ({ chain }) =>
+        (fontSize: string) =>
+        ({ chain }: any) =>
           chain().setMark("textStyle", { fontSize }).run(),
+
       unsetFontSize:
         () =>
-        ({ chain }) =>
+        ({ chain }: any) =>
           chain()
             .setMark("textStyle", { fontSize: null })
             .removeEmptyTextStyle()
