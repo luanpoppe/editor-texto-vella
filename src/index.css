@@ -1,0 +1,21 @@
+body {
+  background-color: #f9fbfd;
+}
+
+.tiptap {
+  background-color: white;
+  border: 1px solid gray;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.ProseMirror-focused {
+  outline: none;
+}
+
+.button-hover {
+  background-color: white;
+}
+.button-hover:hover {
+  background-color: rgb(201, 196, 196);
+}

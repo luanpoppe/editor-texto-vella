@@ -8,7 +8,7 @@ import {
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect } from "react";
 import { getChatGPTAnswer } from "../utils/openAI";
-import { BarraDeOpcoes } from "./BarraDeOpcoes";
+import { BarraDeOpcoes } from "./BarraDeOpcoes/BarraDeOpcoes";
 import Underline from "@tiptap/extension-underline";
 import Link from "@tiptap/extension-link";
 import TextStyle from "@tiptap/extension-text-style";
@@ -42,7 +42,19 @@ const Tiptap = () => {
       slotBefore={<BarraDeOpcoes />}
       onUpdate={(e) => console.log(e)}
     >
-      <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
+      <FloatingMenu editor={null}>
+        This is the floating menu
+        <select
+          style={{ overflow: "visible !important", zIndex: "9999" }}
+          name="asd"
+          id="asdasd"
+          onMouseDown={(e) => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <option value="a">Opção 1</option>
+          <option value="b">Opção 2</option>
+        </select>
+      </FloatingMenu>
       <BubbleMenuWithEditor />
     </EditorProvider>
   );
