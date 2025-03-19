@@ -1,5 +1,8 @@
 import { useCurrentEditor } from "@tiptap/react";
-import { toggleFormatacao } from "../../utils/toggleFormatacoes";
+import {
+  checkEditorClassActive,
+  toggleFormatacao,
+} from "../../utils/toggleFormatacoes";
 import {
   FaBold,
   FaItalic,
@@ -7,10 +10,6 @@ import {
   FaStrikethrough,
   FaListOl,
   FaListUl,
-  FaAlignCenter,
-  FaAlignRight,
-  FaAlignLeft,
-  FaAlignJustify,
 } from "react-icons/fa6";
 import { BotaoBarraDeOpcoes } from "./BotaoBarraDeOpcoes";
 import { SelectFontSize } from "./SelectFontSize";
@@ -30,9 +29,6 @@ export function BarraDeOpcoes() {
     editor.chain().focus().toggleBulletList().run();
   const toggleOrderedList = toggleFormatacao(editor, "toggleOrderedList");
 
-  const setTextAlign = (posicao: string) =>
-    toggleFormatacao(editor, "setTextAlign", posicao);
-
   const horizontalRow = toggleFormatacao(editor, "setHorizontalRule");
   const setColor = toggleFormatacao(editor, "setColor", "#958DF1");
   const unsetColor = toggleFormatacao(editor, "unsetColor");
@@ -51,25 +47,43 @@ export function BarraDeOpcoes() {
         gap: "4px",
       }}
     >
-      <BotaoBarraDeOpcoes onClick={toggleBold}>
+      <BotaoBarraDeOpcoes
+        className={checkEditorClassActive(editor, "bold")}
+        onClick={toggleBold}
+      >
         <FaBold />
       </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={toggleItalic}>
+      <BotaoBarraDeOpcoes
+        className={checkEditorClassActive(editor, "italic")}
+        onClick={toggleItalic}
+      >
         <FaItalic />
       </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={toggleUnderline}>
+      <BotaoBarraDeOpcoes
+        className={checkEditorClassActive(editor, "underline")}
+        onClick={toggleUnderline}
+      >
         <FaUnderline />
       </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={toggleStrike}>
+      <BotaoBarraDeOpcoes
+        className={checkEditorClassActive(editor, "strike")}
+        onClick={toggleStrike}
+      >
         <FaStrikethrough />
       </BotaoBarraDeOpcoes>
 
       <SeparadorVertical />
 
-      <BotaoBarraDeOpcoes onClick={toggleOrderedList}>
+      <BotaoBarraDeOpcoes
+        className={checkEditorClassActive(editor, "orderedList")}
+        onClick={toggleOrderedList}
+      >
         <FaListOl />
       </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={() => toggleBulletList()}>
+      <BotaoBarraDeOpcoes
+        className={checkEditorClassActive(editor, "bulletList")}
+        onClick={toggleBulletList}
+      >
         <FaListUl />
       </BotaoBarraDeOpcoes>
 

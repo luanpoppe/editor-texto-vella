@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useCurrentEditor } from "@tiptap/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toggleFormatacao } from "../../utils/toggleFormatacoes";
 import { BotaoBarraDeOpcoesComoDiv } from "./BotaoBarraDeOpcoes";
 import {
@@ -15,8 +16,11 @@ export function SelectHeadings() {
   const [headingState, setHeadingState] = useState("Normal");
   const { editor } = useCurrentEditor();
   if (!editor) return;
+  const attr = editor.getAttributes("heading");
 
   function changeHeading(level: number) {
+    editor!.chain().focus().unsetAllMarks().run();
+
     if (level == 0) {
       setHeadingState("Normal");
       const setParagraph = toggleFormatacao(editor!, "setParagraph");
@@ -29,6 +33,12 @@ export function SelectHeadings() {
       setHeading();
     }
   }
+
+  useEffect(() => {
+    console.log("attr: ", attr);
+    const heading = attr.level;
+    setHeadingState(heading ? `Título ${heading}` : "Normal");
+  }, [editor, attr]);
 
   return (
     <DropdownMenu>

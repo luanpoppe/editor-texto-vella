@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useCurrentEditor } from "@tiptap/react";
 import { toggleFormatacao } from "../../utils/toggleFormatacoes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BotaoBarraDeOpcoesComoDiv } from "./BotaoBarraDeOpcoes";
 import {
   DropdownMenu,
@@ -15,12 +16,23 @@ export function SelectFontSize() {
   const [fontSizeState, setFontSizeState] = useState("16px");
   const { editor } = useCurrentEditor();
   if (!editor) return;
+  const attr = editor.getAttributes("textStyle");
 
   function changeFontSize(fontSize: string) {
+    const heading = editor!.getAttributes("heading").level;
+    if (heading) {
+      editor!.chain().focus().toggleHeading({ level: heading }).run();
+    }
+
     setFontSizeState(fontSize);
     const setFontSize = toggleFormatacao(editor!, "setFontSize", fontSize);
     setFontSize();
   }
+
+  useEffect(() => {
+    const fontSize = editor.getAttributes("textStyle").fontSize;
+    setFontSizeState(fontSize ?? "16px");
+  }, [editor, attr]);
 
   return (
     <DropdownMenu>

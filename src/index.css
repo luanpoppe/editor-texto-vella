@@ -84,6 +84,16 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  ol,
+  ol li {
+    @apply list-decimal pl-5;
+  }
+
+  ul,
+  ul li {
+    @apply list-disc pl-5;
+  }
 }
 
 body {

@@ -1,12 +1,17 @@
 import { Button } from "../ui/button";
 
-export function BotaoBarraDeOpcoes(props: any) {
-  const { children, onClick } = props;
+type BotaoBarraDeOpcoesProps = React.PropsWithChildren &
+  React.ComponentProps<"button">;
 
+export function BotaoBarraDeOpcoes({
+  children,
+  className,
+  ...props
+}: BotaoBarraDeOpcoesProps) {
   return (
     <Button
-      className="bg-white text-black hover:bg-gray-300 p-2"
-      onClick={onClick}
+      className={`bg-white text-black hover:bg-gray-300 p-2 ${className ?? ""}`}
+      {...props}
     >
       {children}
     </Button>

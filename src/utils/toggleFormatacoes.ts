@@ -5,5 +5,13 @@ export function toggleFormatacao(
   callbackFormatacao: string,
   options: any = undefined
 ) {
+  // console.log(
+  //   'editor.getAttributes("textStyle"): ',
+  //   editor.getAttributes("textStyle")
+  // );
   return () => editor.chain().focus()[callbackFormatacao](options).run();
+}
+
+export function checkEditorClassActive(editor: Editor, seletorChecado: string) {
+  return editor.isActive(seletorChecado) ? "bg-gray-400" : "";
 }

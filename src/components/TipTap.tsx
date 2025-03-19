@@ -36,7 +36,7 @@ const extensions = [
   }),
 ];
 
-const content = "<h2>Olá!!</h2>";
+const content = "<h2>Olá!!</h2><br><p>Texto qualquer</p>";
 
 const Tiptap = () => {
   return (
@@ -44,7 +44,7 @@ const Tiptap = () => {
       extensions={extensions}
       content={content}
       slotBefore={<BarraDeOpcoes />}
-      // onUpdate={(e) => console.log(e)}
+      // onUpdate={(e) => console.log(e.editor.isActive("bold"))}
       autofocus={false}
     >
       <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
