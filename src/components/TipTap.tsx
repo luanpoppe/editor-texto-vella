@@ -19,7 +19,11 @@ import { BarraDeOpcoes } from "./BarraDeOpcoes/BarraDeOpcoes";
 
 // define your extension array
 const extensions = [
-  StarterKit,
+  StarterKit.configure({
+    heading: {
+      levels: [1, 2, 3],
+    },
+  }),
   Underline,
   Link,
   TextStyle,
@@ -32,7 +36,7 @@ const extensions = [
   }),
 ];
 
-const content = "<h1>olá meu pcero</h1>";
+const content = "<h2>Olá!!</h2>";
 
 const Tiptap = () => {
   return (

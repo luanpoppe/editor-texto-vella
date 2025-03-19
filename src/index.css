@@ -4,8 +4,16 @@
 
 @layer base {
   h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 600;
+  }
+  h2 {
+    font-size: 4rem;
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 2rem;
+    font-weight: 400;
   }
   :root {
     --background: 0 0% 100%;
@@ -91,11 +99,4 @@ body {
 
 .ProseMirror-focused {
   outline: none;
-}
-
-.button-hover {
-  background-color: white;
-}
-.button-hover:hover {
-  background-color: rgb(201, 196, 196);
 }

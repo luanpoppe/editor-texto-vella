@@ -7,10 +7,16 @@ import {
   FaStrikethrough,
   FaListOl,
   FaListUl,
+  FaAlignCenter,
+  FaAlignRight,
+  FaAlignLeft,
+  FaAlignJustify,
 } from "react-icons/fa6";
 import { BotaoBarraDeOpcoes } from "./BotaoBarraDeOpcoes";
 import { SelectFontSize } from "./SelectFontSize";
 import { SelectHeadings } from "./SelectHeading";
+import { RxDividerHorizontal } from "react-icons/rx";
+import { AlignTextBarraDeOpcoes } from "./AlignText";
 
 export function BarraDeOpcoes() {
   const { editor } = useCurrentEditor();
@@ -70,11 +76,12 @@ export function BarraDeOpcoes() {
       <SeparadorVertical />
 
       <SelectFontSize />
-
       <SelectHeadings />
 
+      <SeparadorVertical />
+
       <BotaoBarraDeOpcoes onClick={horizontalRow}>
-        LinhaHorizontal
+        <RxDividerHorizontal />
       </BotaoBarraDeOpcoes>
 
       <BotaoBarraDeOpcoes onClick={setColor}>Adicionar cor</BotaoBarraDeOpcoes>
@@ -82,24 +89,9 @@ export function BarraDeOpcoes() {
         Remover qualquer cor
       </BotaoBarraDeOpcoes>
 
-      <BotaoBarraDeOpcoes onClick={setTextAlign("center")}>
-        Centralizar
-      </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={setTextAlign("left")}>
-        Esquerda
-      </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={setTextAlign("right")}>
-        Direita
-      </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={setTextAlign("justify")}>
-        Justificar
-      </BotaoBarraDeOpcoes>
+      <SeparadorVertical />
 
-      {/* Mudar tamanho da fonte abaixo ainda não funcionando --> Ver como cria uma custom extension para isso */}
-      {/* <FontSizeSelector /> */}
-      {/* <BotaoBarraDeOpcoes onClick={() => editor.chain().focus().setFontSize(32).run()}>
-        Texto maior
-      </BotaoBarraDeOpcoes> */}
+      <AlignTextBarraDeOpcoes />
     </div>
   );
 }

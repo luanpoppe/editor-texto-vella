@@ -1,55 +1,93 @@
 import { useCurrentEditor } from "@tiptap/react";
 import { useState } from "react";
 import { toggleFormatacao } from "../../utils/toggleFormatacoes";
-import { BotaoBarraDeOpcoes } from "./BotaoBarraDeOpcoes";
+import { BotaoBarraDeOpcoesComoDiv } from "./BotaoBarraDeOpcoes";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export function SelectHeadings() {
-  const [showOptions, setShowOptions] = useState(false);
-  const [fontSizeState, setFontSizeState] = useState("16px");
+  const [headingState, setHeadingState] = useState("Normal");
   const { editor } = useCurrentEditor();
   if (!editor) return;
 
-  const toggleHeading = (level: number) =>
-    toggleFormatacao(editor, "toggleHeading", { level });
-
   function changeHeading(level: number) {
-    setShowOptions(false);
-    // setFontSizeState(fontSize);
-    toggleHeading(level)();
+    if (level == 0) {
+      setHeadingState("Normal");
+      const setParagraph = toggleFormatacao(editor!, "setParagraph");
+      setParagraph();
+    } else {
+      setHeadingState(`Título ${level}`);
+      const setHeading = toggleFormatacao(editor!, "setHeading", {
+        level,
+      });
+      setHeading();
+    }
   }
 
   return (
-    <div style={{ position: "relative" }}>
-      <BotaoBarraDeOpcoes
-        onClick={() => {
-          setShowOptions(!showOptions);
-        }}
-      >
-        Títulos
-      </BotaoBarraDeOpcoes>
-      {showOptions && (
-        <div
-          style={{
-            position: "absolute",
-            zIndex: "99",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <BotaoBarraDeOpcoes onClick={() => changeHeading(1)}>
-            Título 1
-          </BotaoBarraDeOpcoes>
-          <BotaoBarraDeOpcoes onClick={() => changeHeading(2)}>
-            Título 2
-          </BotaoBarraDeOpcoes>
-          <BotaoBarraDeOpcoes onClick={() => changeHeading(3)}>
-            Título 3
-          </BotaoBarraDeOpcoes>
-        </div>
-      )}
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <BotaoBarraDeOpcoesComoDiv>{headingState}</BotaoBarraDeOpcoesComoDiv>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel>Títulos</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+
+        <DropdownMenuItem onClick={() => changeHeading(0)}>
+          Normal
+        </DropdownMenuItem>
+
+        <DropdownMenuItem onClick={() => changeHeading(1)}>
+          Título 1
+        </DropdownMenuItem>
+
+        <DropdownMenuItem onClick={() => changeHeading(2)}>
+          Título 2
+        </DropdownMenuItem>
+
+        <DropdownMenuItem onClick={() => changeHeading(3)}>
+          Título 3
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
+
+  // return (
+  //   <div style={{ position: "relative" }}>
+  //     <BotaoBarraDeOpcoes
+  //       onClick={() => {
+  //         setShowOptions(!showOptions);
+  //       }}
+  //     >
+  //       Títulos
+  //     </BotaoBarraDeOpcoes>
+  //     <div
+  //       style={{
+  //         position: "absolute",
+  //         zIndex: "99",
+  //         display: "flex",
+  //         flexDirection: "column",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         width: "100%",
+  //       }}
+  //     >
+  //       <BotaoBarraDeOpcoes onClick={() => changeHeading(1)}>
+  //         Título 1
+  //       </BotaoBarraDeOpcoes>
+  //       <BotaoBarraDeOpcoes onClick={() => changeHeading(2)}>
+  //         Título 2
+  //       </BotaoBarraDeOpcoes>
+  //       <BotaoBarraDeOpcoes onClick={() => changeHeading(3)}>
+  //         Título 3
+  //       </BotaoBarraDeOpcoes>
+  //     </div>
+  //   </div>
+  // );
 }
