@@ -19,7 +19,9 @@ export function BarraDeOpcoes() {
   const toggleItalic = toggleFormatacao(editor, "toggleItalic");
   const toggleUnderline = toggleFormatacao(editor, "toggleUnderline");
   const toggleStrike = toggleFormatacao(editor, "toggleStrike");
-  const toggleBulletList = toggleFormatacao(editor, "toggleBulletList");
+  // const toggleBulletList = toggleFormatacao(editor, "toggleBulletList");
+  const toggleBulletList = () =>
+    editor.chain().focus().toggleBulletList().run();
   const toggleOrderedList = toggleFormatacao(editor, "toggleOrderedList");
 
   const setTextAlign = (posicao: string) =>
@@ -36,7 +38,7 @@ export function BarraDeOpcoes() {
         backgroundColor: "white",
         borderRadius: "6px",
         border: "1px solid #cfcaca",
-        height: "2.5rem",
+        height: "3rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -46,19 +48,19 @@ export function BarraDeOpcoes() {
       <BotaoBarraDeOpcoes onClick={toggleBold}>
         <FaBold />
       </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={() => toggleItalic()}>
+      <BotaoBarraDeOpcoes onClick={toggleItalic}>
         <FaItalic />
       </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={() => toggleUnderline()}>
+      <BotaoBarraDeOpcoes onClick={toggleUnderline}>
         <FaUnderline />
       </BotaoBarraDeOpcoes>
-      <BotaoBarraDeOpcoes onClick={() => toggleStrike()}>
+      <BotaoBarraDeOpcoes onClick={toggleStrike}>
         <FaStrikethrough />
       </BotaoBarraDeOpcoes>
 
       <SeparadorVertical />
 
-      <BotaoBarraDeOpcoes onClick={() => toggleOrderedList()}>
+      <BotaoBarraDeOpcoes onClick={toggleOrderedList}>
         <FaListOl />
       </BotaoBarraDeOpcoes>
       <BotaoBarraDeOpcoes onClick={() => toggleBulletList()}>

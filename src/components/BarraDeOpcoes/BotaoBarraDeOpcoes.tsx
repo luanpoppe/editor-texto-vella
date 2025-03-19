@@ -1,18 +1,28 @@
-export function BotaoBarraDeOpcoes(props) {
+import { Button } from "../ui/button";
+
+export function BotaoBarraDeOpcoes(props: any) {
   const { children, onClick } = props;
 
   return (
-    <button
+    <Button
+      className="bg-white text-black hover:bg-gray-300 p-2"
       onClick={onClick}
-      style={{
-        border: "none",
-        cursor: "pointer",
-        borderRadius: "4px",
-        padding: "8px 4px",
-      }}
-      className="button-hover"
     >
       {children}
-    </button>
+    </Button>
+  );
+}
+
+export function BotaoBarraDeOpcoesComoDiv(props: any) {
+  const { children, onClick } = props;
+
+  return (
+    <Button
+      asChild={true}
+      className="bg-white text-black hover:bg-gray-300 p-2"
+      onClick={onClick}
+    >
+      <div>{children}</div>
+    </Button>
   );
 }

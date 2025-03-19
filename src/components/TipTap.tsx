@@ -40,21 +40,10 @@ const Tiptap = () => {
       extensions={extensions}
       content={content}
       slotBefore={<BarraDeOpcoes />}
-      onUpdate={(e) => console.log(e)}
+      // onUpdate={(e) => console.log(e)}
+      autofocus={false}
     >
-      <FloatingMenu editor={null}>
-        This is the floating menu
-        <select
-          style={{ overflow: "visible !important", zIndex: "9999" }}
-          name="asd"
-          id="asdasd"
-          onMouseDown={(e) => e.stopPropagation()}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <option value="a">Opção 1</option>
-          <option value="b">Opção 2</option>
-        </select>
-      </FloatingMenu>
+      <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
       <BubbleMenuWithEditor />
     </EditorProvider>
   );

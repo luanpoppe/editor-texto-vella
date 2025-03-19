@@ -5,5 +5,5 @@ export function toggleFormatacao(
   callbackFormatacao: string,
   options: any = undefined
 ) {
-  return editor.chain().focus()[callbackFormatacao](options).run;
+  return () => editor.chain().focus()[callbackFormatacao](options).run();
 }
