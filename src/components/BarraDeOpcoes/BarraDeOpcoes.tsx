@@ -16,6 +16,7 @@ import { SelectFontSize } from "./SelectFontSize";
 import { SelectHeadings } from "./SelectHeading";
 import { RxDividerHorizontal } from "react-icons/rx";
 import { AlignTextBarraDeOpcoes } from "./AlignText";
+import { SelectFontFamily } from "./SelectFontFamily";
 
 export function BarraDeOpcoes() {
   const { editor } = useCurrentEditor();
@@ -91,6 +92,7 @@ export function BarraDeOpcoes() {
 
       <SelectFontSize />
       <SelectHeadings />
+      <SelectFontFamily />
 
       <SeparadorVertical />
 

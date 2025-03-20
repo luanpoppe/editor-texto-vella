@@ -16,6 +16,8 @@ import TextAlign from "@tiptap/extension-text-align";
 import { getChatGPTAnswer } from "@/utils/openAI";
 import FontSize from "@/utils/customFontSizeExtension";
 import { BarraDeOpcoes } from "./BarraDeOpcoes/BarraDeOpcoes";
+import FontFamily from "@tiptap/extension-font-family";
+import { BubbleMenuWithEditor } from "./BubbleMenu";
 
 // define your extension array
 const extensions = [
@@ -30,6 +32,7 @@ const extensions = [
   Color,
   Typography,
   FontSize,
+  FontFamily,
   TextAlign.configure({
     types: ["heading", "paragraph"],
     defaultAlignment: "left",
@@ -46,45 +49,17 @@ const Tiptap = () => {
       slotBefore={<BarraDeOpcoes />}
       // onUpdate={(e) => console.log(e.editor.isActive("bold"))}
       autofocus={false}
+      editorProps={{
+        attributes: {
+          style: "font-family: Arial, sans-serif;", // Default font
+        },
+      }}
     >
       <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
+
       <BubbleMenuWithEditor />
     </EditorProvider>
   );
 };
 
 export default Tiptap;
-
-export function BubbleMenuWithEditor() {
-  const { editor } = useCurrentEditor();
-  if (!editor) return;
-
-  return (
-    <BubbleMenu editor={null}>
-      <div>
-        <button
-          onClick={async () => {
-            const { from, to } = editor.state.selection;
-            const text = editor.state.doc.textBetween(from, to, " ");
-            console.log("text: ", text);
-            editor.commands.insertContentAt(to, "<p>Carregando...</p>");
-            const gptAnswer = await getChatGPTAnswer(text);
-            editor.commands.undo();
-
-            editor.commands.insertContentAt(
-              { from: to, to: to },
-              `${gptAnswer}`
-            );
-            editor.chain().focus();
-
-            // editor.state.selection.content().toJSON()
-            // console.log("CADE AQUI OLÁ", editor.getJSON());
-          }}
-        >
-          GPTinho
-        </button>
-        <button>Botão 2</button>
-      </div>
-    </BubbleMenu>
-  );
-}
