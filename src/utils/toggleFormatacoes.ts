@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Editor } from "@tiptap/react";
 
 export function toggleFormatacao(
@@ -9,6 +10,7 @@ export function toggleFormatacao(
   //   'editor.getAttributes("textStyle"): ',
   //   editor.getAttributes("textStyle")
   // );
+  // @ts-ignore
   return () => editor.chain().focus()[callbackFormatacao](options).run();
 }
 

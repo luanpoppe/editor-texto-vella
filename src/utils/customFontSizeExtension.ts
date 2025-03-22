@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Extension } from "@tiptap/core";
 import "@tiptap/extension-text-style";
 
@@ -39,6 +40,7 @@ export const FontSize = Extension.create({
     ];
   },
 
+  // @ts-ignore
   addCommands() {
     return {
       setFontSize:
