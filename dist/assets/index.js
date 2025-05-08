@@ -38908,7 +38908,7 @@ const R5 = [
     });
 function I5(properties) {
   console.log("properties: ", properties);
-  const lista = properties.param2.split("+");
+  const lista = properties.param2.split(",");
   for (const element of lista) {
     console.log(`OLÁ: O valor passado foi ${element}`);
   }
