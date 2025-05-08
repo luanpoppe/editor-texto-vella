@@ -38906,11 +38906,14 @@ const R5 = [
     });
 function I5(t, y, properties) {
   console.log("properties: ", properties);
+  for (const element of y) {
+    console.log(element);
+  }
   alert(
     "VALOR DO PARAMETRO: " +
       t +
-      " Valor parâmetro organizado: " +
-      y.join(" | ") +
+      // " Valor parâmetro organizado: " +
+      // y.join(" | ") +
       " PARAM1: " +
       properties.param1 +
       " PARAM2: " +
