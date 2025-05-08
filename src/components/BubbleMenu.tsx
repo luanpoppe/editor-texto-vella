@@ -21,6 +21,7 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 
 export function BubbleMenuWithEditor() {
   const { editor } = useCurrentEditor();
@@ -46,20 +47,48 @@ export function BubbleMenuWithEditor() {
             <CommandInput placeholder="Ache o que procura" />
 
             <CommandList>
-              <CommandEmpty>Nenhum resultado encontrado</CommandEmpty>
+              <CommandEmpty
+                onClick={() => {
+                  console.log("FOI CLICADO TOP");
+                  // @ts-ignore
+                  bubble_fn_salvar_texto({
+                    output1: editor.getText(),
+                    output2: JSON.stringify(editor.getJSON()),
+                    output3: editor.getHTML(),
+                  });
+                }}
+              >
+                Nenhum resultado encontrado
+              </CommandEmpty>
 
               <CommandGroup heading="Escrita">
-                <CommandItem
-                  onClick={() => {
-                    // @ts-ignore
-                    bubble_fn_salvar_texto({
-                      output1: editor.getText(),
-                      output2: JSON.stringify(editor.getJSON()),
-                      output3: editor.getHTML(),
-                    });
-                  }}
-                >
-                  Melhorar escrita do texto selecionado
+                <CommandItem>
+                  {/* <Button
+                    onClick={() => {
+                      console.log("FOI CLICADO TOP");
+                      // @ts-ignore
+                      bubble_fn_salvar_texto({
+                        output1: editor.getText(),
+                        output2: JSON.stringify(editor.getJSON()),
+                        output3: editor.getHTML(),
+                      });
+                    }}
+                  >
+                    Botão - CLICAR AQUI TOP
+                  </Button> */}
+                  <p
+                    onClick={() => {
+                      console.log("FOI CLICADO TOP");
+                      // @ts-ignore
+                      bubble_fn_salvar_texto({
+                        output1: editor.getText(),
+                        output2: JSON.stringify(editor.getJSON()),
+                        output3: editor.getHTML(),
+                      });
+                    }}
+                  >
+                    Melhorar escrita do texto selecionado
+                  </p>
                 </CommandItem>
                 <CommandItem>
                   Tornar o texto selecionado mais sucinto
