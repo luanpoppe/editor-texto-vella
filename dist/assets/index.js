@@ -38906,7 +38906,9 @@ const R5 = [
     });
 function I5(t, y, properties) {
   console.log("properties: ", properties);
-  for (const element of y) {
+  console.log("y: ", y);
+  console.log(typeof y);
+  for (const element of y.get()) {
     console.log(element);
   }
   alert(
