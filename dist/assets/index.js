@@ -1,3 +1,5 @@
+const { TableProperties } = require("lucide-react");
+
 function fO(t, e) {
   for (var n = 0; n < e.length; n++) {
     const r = e[n];
@@ -38904,16 +38906,12 @@ const R5 = [
         O.jsx(A5, {}),
       ],
     });
-function I5(t, y, properties) {
+function I5(properties) {
   console.log("properties: ", properties);
-  console.log("y: ", y);
-  console.log("typeof y: ", typeof y);
-  console.log("typeof y.get: ", typeof y.get);
-  console.log("y.get: ", y.get);
-  console.log("y.get(): ", y.get());
-  // for (const element of y.get()) {
-  //   console.log(element);
-  // }
+  const lista = properties.param2.split("+")
+  for (const element of lista) {
+    console.log(`OLÁ: O valor passado foi ${element}`)
+  }
   alert(
     "VALOR DO PARAMETRO: " +
       t +
