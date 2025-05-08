@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Tiptap from "./components/TipTap";
 // import {
 //   Accordion,
@@ -7,9 +8,15 @@ import Tiptap from "./components/TipTap";
 // } from "./components/ui/accordion";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
-function testeBubbleForaDoApp() {
+function testeBubbleForaDoApp(param1: string) {
   console.log("OPAAAA ESTE TEXTO TEM QUE APARECER HEIN");
-  alert("OPAAAA SE APARECEU É PQ DEU BOM");
+  alert(
+    "VALOR DO PARAMETRO: " +
+      param1 +
+      " Valor parâmetro organizado: " +
+      // @ts-ignore
+      properties.param1
+  );
 }
 
 (window as any).testeBubbleForaDoApp = testeBubbleForaDoApp;
@@ -22,6 +29,15 @@ function App() {
 
   return (
     <>
+      <button
+        onClick={() => {
+          // @ts-ignore
+          bubble_fn_melhorar_escrita({ output1: "apple", output2: 69 });
+        }}
+      >
+        BOTÃO FEIO DE TESTE
+      </button>
+
       <Tiptap />
 
       {/* <h1 className="text-red-500">Olá</h1> */}
