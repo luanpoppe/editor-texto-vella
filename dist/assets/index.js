@@ -38904,8 +38904,18 @@ const R5 = [
         O.jsx(A5, {}),
       ],
     });
-function I5(t, y) {
-  alert("VALOR DO PARAMETRO: " + t + " Valor parâmetro organizado: " + y);
+function I5(t, y, properties) {
+  console.log("properties: ", properties);
+  alert(
+    "VALOR DO PARAMETRO: " +
+      t +
+      " Valor parâmetro organizado: " +
+      y.join(" | ") +
+      " PARAM1: " +
+      properties.param1 +
+      " PARAM2: " +
+      properties.param2
+  );
 }
 window.testeBubbleForaDoApp = I5;
 function L5() {
