@@ -1,4 +1,4 @@
-const { TableProperties } = require("lucide-react");
+// const { TableProperties } = require("lucide-react");
 
 function fO(t, e) {
   for (var n = 0; n < e.length; n++) {
@@ -38908,9 +38908,9 @@ const R5 = [
     });
 function I5(properties) {
   console.log("properties: ", properties);
-  const lista = properties.param2.split("+")
+  const lista = properties.param2.split("+");
   for (const element of lista) {
-    console.log(`OLÁ: O valor passado foi ${element}`)
+    console.log(`OLÁ: O valor passado foi ${element}`);
   }
   alert(
     "VALOR DO PARAMETRO: " +
