@@ -7,7 +7,19 @@ import Tiptap from "./components/TipTap";
 // } from "./components/ui/accordion";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
+function testeBubbleForaDoApp() {
+  console.log("OPAAAA ESTE TEXTO TEM QUE APARECER HEIN");
+  alert("OPAAAA SE APARECEU É PQ DEU BOM");
+}
+
+(window as any).testeBubbleForaDoApp = testeBubbleForaDoApp;
+
 function App() {
+  function testeBubbleDentroDoApp() {
+    console.log("OPAAAA ESTE TEXTO TEM QUE APARECER HEIN");
+    alert("OPAAAA SE APARECEU É PQ DEU BOM");
+  }
+
   return (
     <>
       <Tiptap />
