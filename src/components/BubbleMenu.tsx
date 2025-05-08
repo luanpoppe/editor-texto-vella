@@ -51,7 +51,7 @@ export function BubbleMenuWithEditor() {
                   // @ts-ignore
                   bubble_fn_salvar_texto({
                     output1: editor.getText(),
-                    output2: editor.getJSON(),
+                    output2: JSON.stringify(editor.getJSON()),
                     output3: editor.getHTML(),
                   });
                 }}
