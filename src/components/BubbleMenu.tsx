@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { BubbleMenu, useCurrentEditor } from "@tiptap/react";
 import { BotaoBarraDeOpcoes } from "./BarraDeOpcoes/BotaoBarraDeOpcoes";
 import {
@@ -45,7 +46,18 @@ export function BubbleMenuWithEditor() {
             <CommandInput placeholder="Ache o que procura" />
 
             <CommandList>
-              <CommandEmpty>Nenhum resultado encontrado</CommandEmpty>
+              <CommandEmpty
+                onClick={() => {
+                  // @ts-ignore
+                  bubble_fn_salvar_texto({
+                    output1: editor.getText(),
+                    output2: editor.getJSON(),
+                    output3: editor.getHTML(),
+                  });
+                }}
+              >
+                Nenhum resultado encontrado
+              </CommandEmpty>
 
               <CommandGroup heading="Escrita">
                 <CommandItem>Melhorar escrita do texto selecionado</CommandItem>

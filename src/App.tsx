@@ -29,15 +29,6 @@ function App() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          // @ts-ignore
-          bubble_fn_melhorar_escrita({ output1: "apple", output2: 69 });
-        }}
-      >
-        BOTÃO FEIO DE TESTE
-      </button>
-
       <Tiptap />
 
       {/* <h1 className="text-red-500">Olá</h1> */}
