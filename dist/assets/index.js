@@ -38905,8 +38905,7 @@ const R5 = [
       ],
     });
 function I5(t) {
-  console.log("Valor de properties:", properties),
-    alert("VALOR DO PARAMETRO: " + t + " Valor parâmetro organizado: " + t);
+  alert("VALOR DO PARAMETRO: " + t + " Valor parâmetro organizado: " + t);
 }
 window.testeBubbleForaDoApp = I5;
 function L5() {
