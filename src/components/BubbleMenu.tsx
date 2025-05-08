@@ -46,21 +46,21 @@ export function BubbleMenuWithEditor() {
             <CommandInput placeholder="Ache o que procura" />
 
             <CommandList>
-              <CommandEmpty
-                onClick={() => {
-                  // @ts-ignore
-                  bubble_fn_salvar_texto({
-                    output1: editor.getText(),
-                    output2: JSON.stringify(editor.getJSON()),
-                    output3: editor.getHTML(),
-                  });
-                }}
-              >
-                Nenhum resultado encontrado
-              </CommandEmpty>
+              <CommandEmpty>Nenhum resultado encontrado</CommandEmpty>
 
               <CommandGroup heading="Escrita">
-                <CommandItem>Melhorar escrita do texto selecionado</CommandItem>
+                <CommandItem
+                  onClick={() => {
+                    // @ts-ignore
+                    bubble_fn_salvar_texto({
+                      output1: editor.getText(),
+                      output2: JSON.stringify(editor.getJSON()),
+                      output3: editor.getHTML(),
+                    });
+                  }}
+                >
+                  Melhorar escrita do texto selecionado
+                </CommandItem>
                 <CommandItem>
                   Tornar o texto selecionado mais sucinto
                 </CommandItem>
