@@ -47,38 +47,14 @@ export function BubbleMenuWithEditor() {
             <CommandInput placeholder="Ache o que procura" />
 
             <CommandList>
-              <CommandEmpty
-                onClick={() => {
-                  console.log("FOI CLICADO TOP");
-                  // @ts-ignore
-                  bubble_fn_salvar_texto({
-                    output1: editor.getText(),
-                    output2: JSON.stringify(editor.getJSON()),
-                    output3: editor.getHTML(),
-                  });
-                }}
-              >
-                Nenhum resultado encontrado
-              </CommandEmpty>
+              <CommandEmpty>Nenhum resultado encontrado</CommandEmpty>
 
               <CommandGroup heading="Escrita">
                 <CommandItem>
-                  {/* <Button
-                    onClick={() => {
-                      console.log("FOI CLICADO TOP");
-                      // @ts-ignore
-                      bubble_fn_salvar_texto({
-                        output1: editor.getText(),
-                        output2: JSON.stringify(editor.getJSON()),
-                        output3: editor.getHTML(),
-                      });
-                    }}
-                  >
-                    Botão - CLICAR AQUI TOP
-                  </Button> */}
                   <p
                     onClick={() => {
                       console.log("FOI CLICADO TOP");
+                      console.log("editor.getText(): ", editor.getText());
                       // @ts-ignore
                       bubble_fn_salvar_texto({
                         output1: editor.getText(),
