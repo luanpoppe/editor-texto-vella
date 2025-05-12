@@ -8,6 +8,8 @@ import Tiptap from "./components/TipTap";
 // } from "./components/ui/accordion";
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 
+import { SimpleEditor } from "./components/tiptap-templates/simple/simple-editor";
+
 function testeBubbleForaDoApp(param1: string) {
   console.log("OPAAAA ESTE TEXTO TEM QUE APARECER HEIN");
   alert(
@@ -29,7 +31,9 @@ function App() {
 
   return (
     <>
-      <Tiptap />
+      {/* <Tiptap /> */}
+
+      <SimpleEditor />
 
       {/* <h1 className="text-red-500">Olá</h1> */}
 
