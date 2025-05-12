@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { BubbleMenu, useCurrentEditor } from "@tiptap/react";
+import { BubbleMenu, NodePos, useCurrentEditor } from "@tiptap/react";
 import { BotaoBarraDeOpcoes } from "./BarraDeOpcoes/BotaoBarraDeOpcoes";
 import {
   Card,
@@ -28,7 +28,7 @@ export function BubbleMenuWithEditor() {
   if (!editor) return;
 
   return (
-    <BubbleMenu editor={null} tippyOptions={{ placement: "right" }}>
+    <BubbleMenu editor={editor} tippyOptions={{ placement: "right" }}>
       {/* <div className="bg-slate-400 min-w-80 min-h-80 w-full flex flex-col p-6 rounded-md"> */}
       {/* </div> */}
       <Input placeholder="Peça para a IA fazer algo..." className="mb-5" />
@@ -54,11 +54,37 @@ export function BubbleMenuWithEditor() {
                   <p
                     onClick={() => {
                       console.log("FOI CLICADO TOP");
-                      console.log("editor.getText(): ", editor.getText());
+                      // console.log("editor.getText(): ", editor.getText());
+
+                      const { from } = editor.state.selection;
+                      const domAtPos = editor.view.domAtPos(from);
+                      const selectedElement = domAtPos.node as HTMLElement;
+                      console.log("selectedElement: ", selectedElement);
+
+                      const { state } = editor;
+                      const { selection } = state;
+                      const $from = selection.$from;
+                      const parentNode = $from.parent;
+                      const parentNodeStartPos = $from.start();
+
+                      console.log("Node Type:", parentNode.type.name);
+                      console.log("Node Start Position:", parentNodeStartPos);
+                      console.log("Node Content:", parentNode.content.toJSON());
+
+                      selectedElement.setAttribute("contenteditable", "false");
+                      editor.setEditable(false);
+                      setTimeout(() => {
+                        selectedElement.setAttribute("contenteditable", "true");
+                        editor.setEditable(true);
+                      }, 4000);
+
                       // @ts-ignore
                       bubble_fn_salvar_texto({
-                        output1: editor.getText(),
-                        output2: JSON.stringify(editor.getJSON()),
+                        // output1: editor.getText(),
+                        // output2: JSON.stringify(editor.getJSON()),
+                        // output3: editor.getHTML(),
+                        output1: parentNode.toJSON(),
+                        output2: parentNodeStartPos,
                         output3: editor.getHTML(),
                       });
                     }}

@@ -80,6 +80,8 @@ import "@/components/tiptap-templates/simple/simple-editor.scss";
 
 import content from "@/components/tiptap-templates/simple/data/content.json";
 import { BubbleMenuWithEditor } from "@/components/BubbleMenu";
+import TextStyle from "@tiptap/extension-text-style";
+import Color from "@tiptap/extension-color";
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -150,9 +152,7 @@ const MainToolbarContent = ({
 
       {isMobile && <ToolbarSeparator />}
 
-      <ToolbarGroup>
-        <ThemeToggle />
-      </ToolbarGroup>
+      <ToolbarGroup>{/* <ThemeToggle /> */}</ToolbarGroup>
     </>
   );
 };
@@ -216,6 +216,8 @@ export function SimpleEditor() {
       Superscript,
       Subscript,
 
+      TextStyle,
+      Color,
       Selection,
       ImageUploadNode.configure({
         accept: "image/*",
