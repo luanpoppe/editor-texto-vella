@@ -16,12 +16,8 @@ function testeBubbleForaDoApp(param1: string) {
 
 (window as any).testeBubbleForaDoApp = testeBubbleForaDoApp;
 
-function App() {
-  function testeBubbleDentroDoApp() {
-    console.log("OPAAAA ESTE TEXTO TEM QUE APARECER HEIN");
-    alert("OPAAAA SE APARECEU É PQ DEU BOM");
-  }
 
+function App() {
   return (
     <>
       {/* <Tiptap /> */}

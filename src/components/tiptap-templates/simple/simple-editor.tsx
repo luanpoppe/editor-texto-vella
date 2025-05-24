@@ -243,6 +243,13 @@ export function SimpleEditor() {
     }
   }, [isMobile, mobileView]);
 
+  function inicializarEditor(properties: any) {
+    console.log("a função inicializarEditor fio chamada!!!");
+    editor!.commands.setContent(properties.param1);
+  }
+
+  (window as any).inicializarEditor = inicializarEditor;
+
   return (
     <EditorContext.Provider value={{ editor }}>
       <Toolbar
