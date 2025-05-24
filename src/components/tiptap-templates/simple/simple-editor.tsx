@@ -110,7 +110,7 @@ const MainToolbarContent = ({
 
       <ToolbarGroup>
         <HeadingDropdownMenu levels={[1, 2, 3, 4]} />
-        <ListDropdownMenu types={["bulletList", "orderedList", "taskList"]} />
+        <ListDropdownMenu types={["bulletList", "orderedList"]} />
         <BlockQuoteButton />
         {/* <CodeBlockButton /> */}
       </ToolbarGroup>

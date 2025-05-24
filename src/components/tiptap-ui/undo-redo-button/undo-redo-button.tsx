@@ -43,8 +43,8 @@ export const historyShortcutKeys: Partial<Record<HistoryAction, string>> = {
 }
 
 export const historyActionLabels: Record<HistoryAction, string> = {
-  undo: "Undo",
-  redo: "Redo",
+  undo: "Desfazer",
+  redo: "Refazer",
 }
 
 /**
