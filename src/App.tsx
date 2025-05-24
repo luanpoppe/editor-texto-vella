@@ -18,8 +18,6 @@ function testeBubbleForaDoApp(param1: string) {
 
 
 function App() {
-  console.log("NOVA BUILD DE 18:37");
-
   return (
     <>
       {/* <Tiptap /> */}

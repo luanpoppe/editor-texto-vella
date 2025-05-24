@@ -187,6 +187,10 @@ const MobileToolbarContent = ({
 );
 
 export function SimpleEditor() {
+  setTimeout(() => {
+    console.log("NOVA BUILD DE 18:37");
+  }, 1000);
+
   const isMobile = useMobile();
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<
@@ -230,7 +234,7 @@ export function SimpleEditor() {
       Link.configure({ openOnClick: true }),
     ],
     // content: content,
-    content: "",
+    content: "OLÁ",
   });
 
   const bodyRect = useCursorVisibility({
