@@ -187,10 +187,6 @@ const MobileToolbarContent = ({
 );
 
 export function SimpleEditor() {
-  setTimeout(() => {
-    console.log("NOVA BUILD DE 18:37");
-  }, 1000);
-
   const isMobile = useMobile();
   const windowSize = useWindowSize();
   const [mobileView, setMobileView] = React.useState<
@@ -249,7 +245,8 @@ export function SimpleEditor() {
   }, [isMobile, mobileView]);
 
   function inicializarEditor(properties: any) {
-    console.log("a função inicializarEditor fio chamada!!!");
+    console.log("NOVA BUILD DE 18:47");
+    console.log("a função inicializarEditor foi chamada!!!");
     editor!.commands.setContent(properties.param1);
   }
 
