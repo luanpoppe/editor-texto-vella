@@ -229,8 +229,7 @@ export function SimpleEditor() {
       TrailingNode,
       Link.configure({ openOnClick: true }),
     ],
-    // content: content,
-    content: "OLÁ",
+    content: "Carregando...",
   });
 
   const bodyRect = useCursorVisibility({
@@ -250,7 +249,14 @@ export function SimpleEditor() {
     editor!.commands.setContent(properties.param1);
   }
 
+  function pedirTextoAtualizado() {
+    const texto = editor!.getHTML();
+    // @ts-ignore
+    bubble_fn_enviarTextoAtualizado({ output1: texto });
+  }
+
   (window as any).inicializarEditor = inicializarEditor;
+  (window as any).pedirTextoAtualizado = pedirTextoAtualizado;
 
   return (
     <EditorContext.Provider value={{ editor }}>
