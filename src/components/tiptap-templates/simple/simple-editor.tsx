@@ -82,6 +82,7 @@ import content from "@/components/tiptap-templates/simple/data/content.json";
 import { BubbleMenuWithEditor } from "@/components/BubbleMenu";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
+import { SelectFontFamily } from "@/components/BarraDeOpcoes/SelectFontFamily";
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -100,6 +101,10 @@ const MainToolbarContent = ({
         <UndoRedoButton action="undo" />
         <UndoRedoButton action="redo" />
       </ToolbarGroup>
+
+      <ToolbarSeparator />
+
+      <SelectFontFamily />
 
       <ToolbarSeparator />
 
@@ -189,7 +194,6 @@ const MobileToolbarContent = ({
 export function SimpleEditor() {
   const isMobile = useMobile();
   const windowSize = useWindowSize();
-  console.log("windowSize: ", windowSize);
   const [mobileView, setMobileView] = React.useState<
     "main" | "highlighter" | "link"
   >("main");
@@ -294,9 +298,9 @@ export function SimpleEditor() {
         />
       </div>
 
-      <FloatingMenu editor={null}>This is the floating menu</FloatingMenu>
+      {/* <FloatingMenu editor={null}>This is the floating menu</FloatingMenu> */}
 
-      <BubbleMenuWithEditor />
+      {/* <BubbleMenuWithEditor /> */}
     </EditorContext.Provider>
   );
 }

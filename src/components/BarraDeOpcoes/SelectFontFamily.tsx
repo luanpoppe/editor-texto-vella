@@ -27,12 +27,14 @@ export function SelectFontFamily() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
   const { editor } = useCurrentEditor();
-  if (!editor) return;
-  const attr = editor.getAttributes("textStyle");
+
+  const attr = editor?.getAttributes("textStyle");
 
   useEffect(() => {
-    setValue(attr.fontFamily ?? "Arial");
-  }, [editor, attr]);
+    setValue(attr?.fontFamily ?? "Arial");
+  }, [editor]);
+
+  if (!editor) return;
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
