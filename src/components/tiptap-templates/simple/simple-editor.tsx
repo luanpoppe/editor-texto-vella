@@ -251,8 +251,9 @@ export function SimpleEditor() {
 
   function pedirTextoAtualizado() {
     const texto = editor!.getHTML();
+    console.log(`O TEXTO ATUAL É: ${texto}`);
     // @ts-ignore
-    bubble_fn_enviarTextoAtualizado({ output1: texto });
+    bubble_fn_enviarTextoAtualizado({ output1: "TEXTO" + texto });
   }
 
   (window as any).inicializarEditor = inicializarEditor;
