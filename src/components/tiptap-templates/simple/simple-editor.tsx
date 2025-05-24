@@ -189,6 +189,7 @@ const MobileToolbarContent = ({
 export function SimpleEditor() {
   const isMobile = useMobile();
   const windowSize = useWindowSize();
+  console.log("windowSize: ", windowSize);
   const [mobileView, setMobileView] = React.useState<
     "main" | "highlighter" | "link"
   >("main");

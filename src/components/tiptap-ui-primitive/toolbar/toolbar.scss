@@ -2,7 +2,8 @@
   --tt-toolbar-height: 2.75rem;
   --tt-safe-area-bottom: env(safe-area-inset-bottom, 0px);
   --tt-toolbar-bg-color: var(--white);
-  --tt-toolbar-border-color: var(--tt-gray-light-a-100);
+  // --tt-toolbar-border-color: var(--tt-gray-light-a-100);
+  --tt-toolbar-border-color: #e3e6eb; // Valor de Ruy
 }
 
 .dark {
