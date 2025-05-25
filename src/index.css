@@ -110,7 +110,7 @@ body {
 
 .tiptap {
   background-color: white;
-  border: 1px solid gray;
+  border: 1px solid #e3e6eb;
   min-height: 80vh;
   padding: 1rem;
 }

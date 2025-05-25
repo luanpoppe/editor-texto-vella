@@ -37,6 +37,7 @@ body {
 .content-wrapper {
   height: calc(100% - var(--tt-toolbar-height));
   overflow-y: auto;
+  background-color: #f9fbfd;
 
   &::-webkit-scrollbar {
     display: block;
