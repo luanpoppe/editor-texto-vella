@@ -23,6 +23,9 @@ import { Link } from "@/components/tiptap-extension/link-extension";
 import { Selection } from "@/components/tiptap-extension/selection-extension";
 import { TrailingNode } from "@/components/tiptap-extension/trailing-node-extension";
 
+import FontSize from "@/utils/customFontSizeExtension";
+import FontFamily from "@tiptap/extension-font-family";
+
 // --- UI Primitives ---
 import { Button } from "@/components/tiptap-ui-primitive/button";
 import { Spacer } from "@/components/tiptap-ui-primitive/spacer";
@@ -220,6 +223,8 @@ export function SimpleEditor() {
       Typography,
       Superscript,
       Subscript,
+      FontSize,
+      FontFamily,
 
       TextStyle,
       Color,
