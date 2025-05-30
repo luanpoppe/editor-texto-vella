@@ -286,7 +286,7 @@ export function SimpleEditor() {
   }, [isMobile, mobileView]);
 
   function inicializarEditor(properties: any) {
-    console.log("NOVA BUILD DE 18:47");
+    console.log("NOVA BUILD DE 18:11");
     console.log("a função inicializarEditor foi chamada!!!");
     editor!.commands.setContent(properties.param1);
   }
@@ -298,8 +298,16 @@ export function SimpleEditor() {
     bubble_fn_enviarTextoAtualizado({ output1: texto });
   }
 
+  function pedirCopiarTexto() {
+    const texto = editor!.getText();
+    console.log(`O TEXTO ATUAL É: ${texto}`);
+    // @ts-ignore
+    bubble_fn_enviarCopiarTexto({ output1: texto });
+  }
+
   (window as any).inicializarEditor = inicializarEditor;
   (window as any).pedirTextoAtualizado = pedirTextoAtualizado;
+  (window as any).pedirCopiarTexto = pedirCopiarTexto;
 
   return (
     <EditorContext.Provider value={{ editor }}>
