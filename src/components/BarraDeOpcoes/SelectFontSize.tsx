@@ -7,16 +7,17 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "../tiptap-ui-primitive/dropdown-menu";
+import { Button } from "../tiptap-ui-primitive/button";
+import { ChevronDownIcon } from "../tiptap-icons/chevron-down-icon";
 
 export function SelectFontSize() {
   const [fontSizeState, setFontSizeState] = useState("16px");
   const { editor } = useCurrentEditor();
-  if (!editor) return;
-  const attr = editor.getAttributes("textStyle");
+  const attr = editor?.getAttributes("textStyle");
+  const fontSizes = [12, 16, 20, 24, 30, 36, 48];
 
   function changeFontSize(fontSize: string) {
     const heading = editor!.getAttributes("heading").level;
@@ -30,34 +31,39 @@ export function SelectFontSize() {
   }
 
   useEffect(() => {
-    const fontSize = editor.getAttributes("textStyle").fontSize;
+    const fontSize = attr?.fontSize;
     setFontSizeState(fontSize ?? "16px");
   }, [editor, attr]);
 
+  if (!editor) return;
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
         onClick={(e) => {
-          console.log("e.isPropagationStopped(): ", e.isPropagationStopped());
+          // console.log("e.isPropagationStopped(): ", e.isPropagationStopped());
           e.stopPropagation();
         }}
       >
-        <BotaoBarraDeOpcoesComoDiv>{fontSizeState}</BotaoBarraDeOpcoesComoDiv>
+        <Button type="button" data-style="ghost">
+          {fontSizeState}
+          <ChevronDownIcon className="tiptap-button-dropdown-small" />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Tamanho da fonte</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => changeFontSize("16px")}>
-          16px
-        </DropdownMenuItem>
-
-        <DropdownMenuItem onClick={() => changeFontSize("20px")}>
-          20px
-        </DropdownMenuItem>
-
-        <DropdownMenuItem onClick={() => changeFontSize("24px")}>
-          24px
-        </DropdownMenuItem>
+        {fontSizes.map((size) => {
+          return (
+            <DropdownMenuItem asChild key={size}>
+              <Button
+                onClick={() => changeFontSize(`${size}px`)}
+                data-style="ghost"
+                role="menuitem"
+                data-active-state={fontSizeState === `${size}px` ? "on" : "off"}
+              >
+                {`${size}px`}
+              </Button>
+            </DropdownMenuItem>
+          );
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   );

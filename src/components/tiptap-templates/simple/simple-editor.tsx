@@ -87,6 +87,7 @@ import { BubbleMenuWithEditor } from "@/components/BubbleMenu";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import { SelectFontFamily } from "@/components/BarraDeOpcoes/SelectFontFamily";
+import { SelectFontSize } from "@/components/BarraDeOpcoes/SelectFontSize";
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -109,6 +110,7 @@ const MainToolbarContent = ({
       <ToolbarSeparator />
 
       <SelectFontFamily />
+      <SelectFontSize />
 
       <ToolbarSeparator />
 
@@ -240,7 +242,8 @@ export function SimpleEditor() {
       TrailingNode,
       Link.configure({ openOnClick: true }),
     ],
-    content: "Carregando...",
+    content:
+      "<p><span style='font-family: Arial; font-size: 16px;'>Carregando...</span></p>",
   });
 
   const bodyRect = useCursorVisibility({
