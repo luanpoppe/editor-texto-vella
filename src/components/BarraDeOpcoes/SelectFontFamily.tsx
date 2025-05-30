@@ -12,7 +12,15 @@ import { ChevronDownIcon } from "../tiptap-icons/chevron-down-icon";
 import { Button } from "../tiptap-ui-primitive/button";
 
 export function SelectFontFamily() {
-  const fontes = ["Arial", "Inter", "Monospace", "Cursive", "serif"];
+  // const fontes = ["Arial", "Inter", "Monospace", "Cursive", "serif"];
+  const fontes = [
+    "Arial",
+    "Times New Roman",
+    "Georgia",
+    "Garamond",
+    "Calibri",
+    "Cambria",
+  ];
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("Arial");

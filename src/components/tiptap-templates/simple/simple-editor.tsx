@@ -4,6 +4,7 @@ import {
   EditorContent,
   EditorContext,
   FloatingMenu,
+  useCurrentEditor,
   useEditor,
 } from "@tiptap/react";
 
@@ -18,6 +19,7 @@ import { Highlight } from "@tiptap/extension-highlight";
 import { Subscript } from "@tiptap/extension-subscript";
 import { Superscript } from "@tiptap/extension-superscript";
 import { Underline } from "@tiptap/extension-underline";
+import { ExportDocx } from "@tiptap-pro/extension-export-docx";
 
 // --- Custom Extensions ---
 import { Link } from "@/components/tiptap-extension/link-extension";
@@ -88,6 +90,7 @@ import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import { SelectFontFamily } from "@/components/BarraDeOpcoes/SelectFontFamily";
 import { SelectFontSize } from "@/components/BarraDeOpcoes/SelectFontSize";
+import { DownloadDocumento } from "@/components/BarraDeOpcoes/DownloadDocumento";
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -109,8 +112,10 @@ const MainToolbarContent = ({
 
       <ToolbarSeparator />
 
-      <SelectFontFamily />
-      <SelectFontSize />
+      <ToolbarGroup>
+        <SelectFontFamily />
+        <SelectFontSize />
+      </ToolbarGroup>
 
       <ToolbarSeparator />
 
@@ -151,6 +156,11 @@ const MainToolbarContent = ({
         <TextAlignButton align="center" />
         <TextAlignButton align="right" />
         <TextAlignButton align="justify" />
+      </ToolbarGroup>
+
+      <ToolbarSeparator />
+      <ToolbarGroup>
+        <DownloadDocumento />
       </ToolbarGroup>
 
       {/* <ToolbarSeparator />
@@ -228,7 +238,6 @@ export function SimpleEditor() {
       Subscript,
       FontSize,
       FontFamily,
-
       TextStyle,
       Color,
       Selection,
@@ -241,6 +250,25 @@ export function SimpleEditor() {
       }),
       TrailingNode,
       Link.configure({ openOnClick: true }),
+      ExportDocx.configure({
+        onCompleteExport: (result: any) => {
+          // setIsLoading(false);
+          //@ts-ignore
+          // const tituloDocumento = bubble_fn_get_titulo_documento();
+          const tituloDocumento = "arquivo-documento";
+
+          const blob = new Blob([result], {
+            type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+
+          a.href = url;
+          a.download = `${tituloDocumento ?? "arquivo-documento"}.docx`;
+          a.click();
+          URL.revokeObjectURL(url);
+        },
+      }),
     ],
     content:
       "<p><span style='font-family: Arial; font-size: 16px;'>Carregando...</span></p>",
