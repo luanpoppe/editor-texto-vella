@@ -158,10 +158,10 @@ const MainToolbarContent = ({
         <TextAlignButton align="justify" />
       </ToolbarGroup>
 
-      <ToolbarSeparator />
+      {/* <ToolbarSeparator />
       <ToolbarGroup>
         <DownloadDocumento />
-      </ToolbarGroup>
+      </ToolbarGroup> */}
 
       {/* <ToolbarSeparator />
 
@@ -298,11 +298,12 @@ export function SimpleEditor() {
     bubble_fn_enviarTextoAtualizado({ output1: texto });
   }
 
-  function pedirCopiarTexto() {
+  async function pedirCopiarTexto() {
     const texto = editor!.getText();
     console.log(`O TEXTO ATUAL É: ${texto}`);
+    await navigator.clipboard.writeText(texto);
     // @ts-ignore
-    bubble_fn_enviarCopiarTexto({ output1: texto });
+    // bubble_fn_enviarCopiarTexto({ output1: texto });
   }
 
   (window as any).inicializarEditor = inicializarEditor;
