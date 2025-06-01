@@ -66,6 +66,7 @@ body {
 
 .simple-editor-content .tiptap.ProseMirror {
   padding: 3rem 3rem;
+  border: 0px; // Medida temporária enquanto não resolve a borda superior do toolbar
 }
 
 @media screen and (max-width: 480px) {
