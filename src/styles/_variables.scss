@@ -15,7 +15,8 @@
 
   /* Gray alpha (light mode) */
   --tt-gray-light-a-50: rgba(56, 56, 56, 0.04);
-  --tt-gray-light-a-100: rgba(15, 22, 36, 0.05);
+  // --tt-gray-light-a-100: rgba(15, 22, 36, 0.05);
+  --tt-gray-light-a-100: hsl(217, 87%, 95%);
   --tt-gray-light-a-200: rgba(37, 39, 45, 0.1);
   --tt-gray-light-a-300: rgba(47, 50, 55, 0.2);
   --tt-gray-light-a-400: rgba(40, 44, 51, 0.42);
@@ -28,7 +29,8 @@
   /* Gray (light mode) */
   --tt-gray-light-50: rgba(250, 250, 250, 1);
   --tt-gray-light-100: rgba(244, 244, 245, 1);
-  --tt-gray-light-200: rgba(234, 234, 235, 1);
+  // --tt-gray-light-200: rgba(234, 234, 235, 1);
+  --tt-gray-light-200: hsl(217, 87%, 90%);
   --tt-gray-light-300: rgba(213, 214, 215, 1);
   --tt-gray-light-400: rgba(166, 167, 171, 1);
   --tt-gray-light-500: rgba(125, 127, 130, 1);
@@ -67,7 +69,8 @@
   --tt-brand-color-200: rgba(195, 189, 255, 1);
   --tt-brand-color-300: rgba(157, 138, 255, 1);
   --tt-brand-color-400: rgba(122, 82, 255, 1);
-  --tt-brand-color-500: rgba(98, 41, 255, 1);
+  // --tt-brand-color-500: rgba(98, 41, 255, 1);
+  --tt-brand-color-500: #0081b8;
   --tt-brand-color-600: rgba(84, 0, 229, 1);
   --tt-brand-color-700: rgba(75, 0, 204, 1);
   --tt-brand-color-800: rgba(56, 0, 153, 1);
