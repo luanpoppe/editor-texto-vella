@@ -284,9 +284,13 @@ export function SimpleEditor() {
   }
 
   async function pedirCopiarTexto() {
-    const texto = editor!.getHTML();
     console.log("PEDIR COPIAR TEXTO FOI CHAMADO");
-    await navigator.clipboard.writeText(texto);
+    const texto = editor!.getHTML();
+    const blob = new Blob([texto], { type: "text/html" });
+    const data = [new ClipboardItem({ "text/html": blob })];
+
+    await navigator.clipboard.write(data);
+    // await navigator.clipboard.writeText(texto);
     // @ts-ignore
     // bubble_fn_enviarCopiarTexto({ output1: texto });
   }
