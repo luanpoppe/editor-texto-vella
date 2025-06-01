@@ -293,14 +293,14 @@ export function SimpleEditor() {
 
   function pedirTextoAtualizado() {
     const texto = editor!.getHTML();
-    console.log(`O TEXTO ATUAL É: ${texto}`);
+    console.log("PEDIR TEXTO ATUALIZADO FOI CHAMADO ");
     // @ts-ignore
     bubble_fn_enviarTextoAtualizado({ output1: texto });
   }
 
   async function pedirCopiarTexto() {
     const texto = editor!.getText();
-    console.log(`O TEXTO ATUAL É: ${texto}`);
+    console.log("PEDIR COPIAR TEXTO FOI CHAMADO");
     await navigator.clipboard.writeText(texto);
     // @ts-ignore
     // bubble_fn_enviarCopiarTexto({ output1: texto });

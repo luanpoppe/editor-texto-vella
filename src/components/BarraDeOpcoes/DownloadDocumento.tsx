@@ -7,6 +7,7 @@ export function DownloadDocumento() {
   const { editor } = useCurrentEditor();
 
   function pedirDownloadDocumento(properties: any) {
+    console.log("pedirDownloadDocumento FOI CHAMADO ");
     editor
       ?.chain()
       .exportDocx({
