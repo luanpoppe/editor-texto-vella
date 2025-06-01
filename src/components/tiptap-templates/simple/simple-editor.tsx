@@ -104,30 +104,23 @@ const MainToolbarContent = ({
   return (
     <>
       <Spacer />
-
       <ToolbarGroup>
         <UndoRedoButton action="undo" />
         <UndoRedoButton action="redo" />
       </ToolbarGroup>
-
       <ToolbarSeparator />
-
       <ToolbarGroup>
         <SelectFontFamily />
         <SelectFontSize />
       </ToolbarGroup>
-
       <ToolbarSeparator />
-
       <ToolbarGroup>
         <HeadingDropdownMenu levels={[1, 2, 3, 4]} />
         <ListDropdownMenu types={["bulletList", "orderedList"]} />
         <BlockQuoteButton />
         {/* <CodeBlockButton /> */}
       </ToolbarGroup>
-
       <ToolbarSeparator />
-
       <ToolbarGroup>
         <MarkButton type="bold" />
         <MarkButton type="italic" />
@@ -141,38 +134,30 @@ const MainToolbarContent = ({
         )}
         {!isMobile ? <LinkPopover /> : <LinkButton onClick={onLinkClick} />}
       </ToolbarGroup>
-
       {/* <ToolbarSeparator /> */}
-
       {/* <ToolbarGroup>
         <MarkButton type="superscript" />
         <MarkButton type="subscript" />
       </ToolbarGroup> */}
-
       <ToolbarSeparator />
-
       <ToolbarGroup>
         <TextAlignButton align="left" />
         <TextAlignButton align="center" />
         <TextAlignButton align="right" />
         <TextAlignButton align="justify" />
       </ToolbarGroup>
-
       {/* <ToolbarSeparator />
-      <ToolbarGroup>
-        <DownloadDocumento />
-      </ToolbarGroup> */}
-
+      <ToolbarGroup> */}
+      <DownloadDocumento />{" "}
+      {/* Não irá mostrar nada de fato na tela -> É apenas para carregar a função de download de documento a ser chamado pela bubble}
+      {/* </ToolbarGroup> */}
       {/* <ToolbarSeparator />
 
       <ToolbarGroup>
         <ImageUploadButton text="Add" />
       </ToolbarGroup> */}
-
       <Spacer />
-
       {isMobile && <ToolbarSeparator />}
-
       <ToolbarGroup>{/* <ThemeToggle /> */}</ToolbarGroup>
     </>
   );
@@ -299,7 +284,7 @@ export function SimpleEditor() {
   }
 
   async function pedirCopiarTexto() {
-    const texto = editor!.getText();
+    const texto = editor!.getHTML();
     console.log("PEDIR COPIAR TEXTO FOI CHAMADO");
     await navigator.clipboard.writeText(texto);
     // @ts-ignore
