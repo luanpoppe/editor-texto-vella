@@ -276,11 +276,15 @@ export function SimpleEditor() {
     editor!.commands.setContent(properties.param1);
   }
 
-  function pedirTextoAtualizado() {
+  function pedirTextoAtualizado(properties: any) {
     const texto = editor!.getHTML();
     console.log("PEDIR TEXTO ATUALIZADO FOI CHAMADO ");
+    console.log("properties.param2: ", properties.param2);
     // @ts-ignore
-    bubble_fn_enviarTextoAtualizado({ output1: texto });
+    bubble_fn_enviarTextoAtualizado({
+      output1: texto,
+      output2: properties.param2,
+    });
   }
 
   async function pedirCopiarTexto() {
