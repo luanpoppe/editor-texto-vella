@@ -4,30 +4,8 @@ import {
   EditorContent,
   EditorContext,
   FloatingMenu,
-  useCurrentEditor,
   useEditor,
 } from "@tiptap/react";
-
-// --- Tiptap Core Extensions ---
-import { StarterKit } from "@tiptap/starter-kit";
-import { Image } from "@tiptap/extension-image";
-import { TaskItem } from "@tiptap/extension-task-item";
-import { TaskList } from "@tiptap/extension-task-list";
-import { TextAlign } from "@tiptap/extension-text-align";
-import { Typography } from "@tiptap/extension-typography";
-import { Highlight } from "@tiptap/extension-highlight";
-import { Subscript } from "@tiptap/extension-subscript";
-import { Superscript } from "@tiptap/extension-superscript";
-import { Underline } from "@tiptap/extension-underline";
-import { ExportDocx } from "@tiptap-pro/extension-export-docx";
-
-// --- Custom Extensions ---
-import { Link } from "@/components/tiptap-extension/link-extension";
-import { Selection } from "@/components/tiptap-extension/selection-extension";
-import { TrailingNode } from "@/components/tiptap-extension/trailing-node-extension";
-
-import FontSize from "@/utils/customFontSizeExtension";
-import FontFamily from "@tiptap/extension-font-family";
 
 // --- UI Primitives ---
 import { Button } from "@/components/tiptap-ui-primitive/button";
@@ -39,7 +17,6 @@ import {
 } from "@/components/tiptap-ui-primitive/toolbar";
 
 // --- Tiptap Node ---
-import { ImageUploadNode } from "@/components/tiptap-node/image-upload-node/image-upload-node-extension";
 import "@/components/tiptap-node/code-block-node/code-block-node.scss";
 import "@/components/tiptap-node/list-node/list-node.scss";
 import "@/components/tiptap-node/image-node/image-node.scss";
@@ -47,7 +24,6 @@ import "@/components/tiptap-node/paragraph-node/paragraph-node.scss";
 
 // --- Tiptap UI ---
 import { HeadingDropdownMenu } from "@/components/tiptap-ui/heading-dropdown-menu";
-import { ImageUploadButton } from "@/components/tiptap-ui/image-upload-button";
 import { ListDropdownMenu } from "@/components/tiptap-ui/list-dropdown-menu";
 import { BlockQuoteButton } from "@/components/tiptap-ui/blockquote-button";
 import { CodeBlockButton } from "@/components/tiptap-ui/code-block-button";
@@ -78,19 +54,15 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 // --- Components ---
 import { ThemeToggle } from "@/components/tiptap-templates/simple/theme-toggle";
 
-// --- Lib ---
-import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
-
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss";
 
 import content from "@/components/tiptap-templates/simple/data/content.json";
 import { BubbleMenuWithEditor } from "@/components/BubbleMenu";
-import TextStyle from "@tiptap/extension-text-style";
-import Color from "@tiptap/extension-color";
 import { SelectFontFamily } from "@/components/BarraDeOpcoes/SelectFontFamily";
 import { SelectFontSize } from "@/components/BarraDeOpcoes/SelectFontSize";
 import { DownloadDocumento } from "@/components/BarraDeOpcoes/DownloadDocumento";
+import { tipTapExtensions } from "./tip-tap-extensions";
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -210,51 +182,7 @@ export function SimpleEditor() {
         "aria-label": "Main content area, start typing to enter text.",
       },
     },
-    extensions: [
-      StarterKit,
-      TextAlign.configure({ types: ["heading", "paragraph"] }),
-      Underline,
-      TaskList,
-      TaskItem.configure({ nested: true }),
-      Highlight.configure({ multicolor: true }),
-      Image,
-      Typography,
-      Superscript,
-      Subscript,
-      FontSize,
-      FontFamily,
-      TextStyle,
-      Color,
-      Selection,
-      ImageUploadNode.configure({
-        accept: "image/*",
-        maxSize: MAX_FILE_SIZE,
-        limit: 3,
-        upload: handleImageUpload,
-        onError: (error) => console.error("Upload failed:", error),
-      }),
-      TrailingNode,
-      Link.configure({ openOnClick: true }),
-      ExportDocx.configure({
-        onCompleteExport: (result: any) => {
-          // setIsLoading(false);
-          //@ts-ignore
-          // const tituloDocumento = bubble_fn_get_titulo_documento();
-          const tituloDocumento = "arquivo-documento";
-
-          const blob = new Blob([result], {
-            type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-          });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-
-          a.href = url;
-          a.download = `${tituloDocumento ?? "arquivo-documento"}.docx`;
-          a.click();
-          URL.revokeObjectURL(url);
-        },
-      }),
-    ],
+    extensions: tipTapExtensions,
     content:
       "<p><span style='font-family: Arial; font-size: 16px;'>Carregando...</span></p>",
   });
