@@ -7,12 +7,13 @@ export function DownloadDocumento() {
 
   async function alterarTextoIA(id: string, text: string) {
     console.log("alterarTextoIA FOI CHAMADO");
+    console.log("TENTATIVA 3");
     //@ts-ignore
     bubble_fn_alterarTextoIA({
       output1: [
         {
           id,
-          texto: text,
+          texto: JSON.stringify(text),
         },
       ],
     });
@@ -24,7 +25,7 @@ export function DownloadDocumento() {
     const { id, texto } = properties.param1[0];
     if (!editor) return;
     const tipTap = new TipTapClass(editor);
-    tipTap.changeNodeHTMLText(JSON.stringify(texto), id);
+    tipTap.changeNodeHTMLText(texto, id);
 
     tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
   }
