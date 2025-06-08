@@ -24,7 +24,7 @@ export function DownloadDocumento() {
     const { id, texto } = properties.param1[0];
     if (!editor) return;
     const tipTap = new TipTapClass(editor);
-    tipTap.changeNodeHTMLText(texto, id);
+    tipTap.changeNodeHTMLText(JSON.stringify(texto), id);
 
     tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
   }
