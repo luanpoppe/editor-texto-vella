@@ -6,16 +6,15 @@ export function DownloadDocumento() {
   const { editor } = useCurrentEditor();
 
   async function alterarTextoIA(id: string, text: string) {
-    console.log("alterarTextoIA FOI CHAMADO");
-    console.log("TENTATIVA 3");
+    console.log("alterarTextoIA FOI CHAMADO - 20:49");
     //@ts-ignore
     bubble_fn_alterarTextoIA({
-      output1: [
+      output1: JSON.stringify([
         {
           id,
-          texto: JSON.stringify(text),
+          texto: text,
         },
-      ],
+      ]),
     });
   }
 
