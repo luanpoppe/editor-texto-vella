@@ -1,4 +1,5 @@
 import { DownloadDocumento } from "@/components/BarraDeOpcoes/DownloadDocumento";
+import { SelectColor } from "@/components/BarraDeOpcoes/SelectColot";
 import { SelectFontFamily } from "@/components/BarraDeOpcoes/SelectFontFamily";
 import { SelectFontSize } from "@/components/BarraDeOpcoes/SelectFontSize";
 import { Spacer } from "@/components/tiptap-ui-primitive/spacer";
@@ -59,6 +60,7 @@ export const MainToolbarContent = ({
           <ColorHighlightPopoverButton onClick={onHighlighterClick} />
         )}
         {!isMobile ? <LinkPopover /> : <LinkButton onClick={onLinkClick} />}
+        <SelectColor />
       </ToolbarGroup>
       {/* <ToolbarSeparator /> */}
       {/* <ToolbarGroup>
@@ -74,7 +76,7 @@ export const MainToolbarContent = ({
       </ToolbarGroup>
       {/* <ToolbarSeparator />
       <ToolbarGroup> */}
-      <DownloadDocumento />{" "}
+      <DownloadDocumento />
       {/* Não irá mostrar nada de fato na tela -> É apenas para carregar a função de download de documento a ser chamado pela bubble}
       {/* </ToolbarGroup> */}
       {/* <ToolbarSeparator />

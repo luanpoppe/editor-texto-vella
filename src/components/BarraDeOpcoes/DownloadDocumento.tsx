@@ -1,10 +1,34 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { DownloadIcon } from "lucide-react";
-import { Button } from "../tiptap-ui-primitive/button";
+import { TipTapClass } from "@/tip-tap.class";
 import { useCurrentEditor } from "@tiptap/react";
 
 export function DownloadDocumento() {
   const { editor } = useCurrentEditor();
+
+  async function alterarTextoIA(id: string, text: string) {
+    console.log("alterarTextoIA FOI CHAMADO");
+    //@ts-ignore
+    bubble_fn_alterarTextoIA({
+      output1: [
+        {
+          id,
+          texto: text,
+        },
+      ],
+    });
+  }
+
+  function textoAlteradoIA(properties: any) {
+    console.log("textoAlteradoIA FOI CHAMADO");
+
+    const { id, texto } = properties.param1[0];
+    if (!editor) return;
+    const tipTap = new TipTapClass(editor);
+    tipTap.changeNodeHTMLText(texto, id);
+
+    tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
+  }
+  (window as any).textoAlteradoIA = textoAlteradoIA;
 
   function pedirDownloadDocumento(properties: any) {
     console.log("pedirDownloadDocumento FOI CHAMADO ");
@@ -46,5 +70,24 @@ export function DownloadDocumento() {
   //   </Button>
   // );
 
-  return <></>;
+  return (
+    <>
+      <button
+        onClick={() => {
+          if (!editor) return;
+          const tipTap = new TipTapClass(editor);
+          const { id } = tipTap.getSelectionNode();
+          const text =
+            tipTap.getDomFromSelection().node.textContent ??
+            "Não pegou nenhum texto no parágrafo :(";
+          console.log("id: ", id);
+          alterarTextoIA(id, text);
+
+          tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
+        }}
+      >
+        BOTAO
+      </button>
+    </>
+  );
 }
