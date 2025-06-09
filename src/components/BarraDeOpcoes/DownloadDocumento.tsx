@@ -85,8 +85,6 @@ export function DownloadDocumento() {
             "Não pegou nenhum texto no parágrafo :(";
           console.log("id: ", id);
           alterarTextoIA(id, text);
-
-          tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
         }}
       >
         BOTAO
