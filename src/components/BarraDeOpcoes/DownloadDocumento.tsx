@@ -21,7 +21,8 @@ export function DownloadDocumento() {
   function textoAlteradoIA(properties: any) {
     console.log("textoAlteradoIA FOI CHAMADO");
 
-    const { id, texto } = properties.param1[0];
+    const param1 = JSON.parse(properties.param1);
+    const { id, texto } = param1[0];
     if (!editor) return;
     const tipTap = new TipTapClass(editor);
     tipTap.changeNodeHTMLText(texto, id);
