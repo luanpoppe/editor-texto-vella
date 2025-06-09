@@ -7,14 +7,17 @@ export function DownloadDocumento() {
 
   async function alterarTextoIA(id: string, text: string) {
     console.log("alterarTextoIA FOI CHAMADO - 20:49");
+    const json = JSON.stringify([
+      {
+        id,
+        texto: text,
+      },
+    ]);
+    // eslint-disable-next-line no-useless-escape
+    const jsonCorreto = json.replaceAll(`"`, `\"`);
     //@ts-ignore
     bubble_fn_alterarTextoIA({
-      output1: JSON.stringify([
-        {
-          id,
-          texto: text,
-        },
-      ]),
+      output1: jsonCorreto,
     });
   }
 
