@@ -14,10 +14,9 @@ export function DownloadDocumento() {
       },
     ]);
     // eslint-disable-next-line no-useless-escape
-    const jsonCorreto = json.replaceAll(`"`, `\"`);
     //@ts-ignore
     bubble_fn_alterarTextoIA({
-      output1: jsonCorreto,
+      output1: json,
     });
   }
 
@@ -30,7 +29,7 @@ export function DownloadDocumento() {
     const tipTap = new TipTapClass(editor);
     tipTap.changeNodeHTMLText(texto, id);
 
-    tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
+    // tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
   }
   (window as any).textoAlteradoIA = textoAlteradoIA;
 
