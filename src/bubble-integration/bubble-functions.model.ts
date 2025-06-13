@@ -16,3 +16,10 @@ export type AlterarTextoIA = {
   id: string;
   texto: string;
 }[];
+
+export type ObjetivoChamadaIABubble = "modificar" | "adicionar";
+
+export type FuncoesIABubble =
+  | "melhorarescrita"
+  | "organizarideias"
+  | "bancodeargumento";

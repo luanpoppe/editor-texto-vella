@@ -1,29 +1,13 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { SendToBubble } from "@/bubble-integration/send-to-bubble";
-import { TipTapClass } from "@/tip-tap.class";
+import { AIIntegration } from "@/toolbar-functions/AI/AI-integration";
 import { useCurrentEditor } from "@tiptap/react";
+import { useMemo } from "react";
 
 export function DownloadDocumento() {
   const { editor } = useCurrentEditor();
+  console.log("editor: ", editor);
 
-  async function alterarTextoIA() {
-    console.log("alterarTextoIA FOI CHAMADO");
-
-    if (!editor) return;
-    const tipTap = new TipTapClass(editor);
-    const { id } = tipTap.getSelectionNode();
-    const text =
-      tipTap.getDomFromSelection().node.textContent ??
-      "Não pegou nenhum texto no parágrafo :(";
-    console.log("id: ", id);
-
-    SendToBubble.alterarTextoIA([
-      {
-        id,
-        texto: text,
-      },
-    ]);
-  }
+  const aiIntegration = useMemo(() => new AIIntegration(editor!), [editor]);
+  // const aiIntegration = new AIIntegration(editor!);
 
   // function textoAlteradoIA(properties: any) {
   //   console.log("textoAlteradoIA FOI CHAMADO");
@@ -80,7 +64,8 @@ export function DownloadDocumento() {
 
   return (
     <>
-      <button onClick={alterarTextoIA}>BOTAO</button>
+      <button onClick={() => aiIntegration.alterarTextoIA()}>B1</button>
+      <button onClick={() => aiIntegration.adicionarTextoIA()}>B2</button>
     </>
   );
 }

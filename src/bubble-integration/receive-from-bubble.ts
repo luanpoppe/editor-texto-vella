@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Editor } from "@tiptap/react";
-import { ReceiveParamsFromBubble } from "./bubble-functions.model";
+import {
+  AlterarTextoIA,
+  ReceiveParamsFromBubble,
+} from "./bubble-functions.model";
 import { SendToBubble } from "./send-to-bubble";
 import { TipTapClass } from "@/tip-tap.class";
 
 export class ReceiveFromBubble {
+  tipTap: TipTapClass = new TipTapClass(this.editor);
+
   constructor(private editor: Editor) {}
 
   initialize() {
@@ -13,6 +18,7 @@ export class ReceiveFromBubble {
     (window as any).pedirCopiarTexto = this.pedirCopiarTexto;
     (window as any).textoAlteradoIA = this.textoAlteradoIA;
     (window as any).pedirDownloadDocumento = this.pedirDownloadDocumento;
+    (window as any).textoAdicionarIA = this.textoAdicionarIA;
   }
 
   inicializarEditor(properties: ReceiveParamsFromBubble) {
@@ -43,14 +49,23 @@ export class ReceiveFromBubble {
 
   textoAlteradoIA(properties: ReceiveParamsFromBubble) {
     this.funcaoFoiChamada(this.textoAlteradoIA.name);
-
-    const param1 = JSON.parse(properties.param1);
-    const { id, texto } = param1[0];
     if (!this.editor) return;
-    const tipTap = new TipTapClass(this.editor);
-    tipTap.changeNodeHTMLText(texto, id);
 
-    // tipTap.changeSelectionNodeHTML("Opa parágrafo novo pcero tamo junto");
+    const paragraphArray = JSON.parse(properties.param1) as AlterarTextoIA;
+    paragraphArray.forEach(({ id, texto }) => {
+      this.tipTap.changeNodeHTMLText(texto, id);
+    });
+  }
+
+  textoAdicionarIA({ param1, param2 }: ReceiveParamsFromBubble) {
+    this.funcaoFoiChamada(this.textoAdicionarIA.name);
+
+    if (!this.editor) return;
+    const tipTap = this.tipTap;
+    const texto = param1;
+    const nodeId = param2;
+
+    tipTap.addTextAfterNode(texto, nodeId);
   }
 
   pedirDownloadDocumento(properties: ReceiveParamsFromBubble) {
@@ -80,6 +95,6 @@ export class ReceiveFromBubble {
   }
 
   private funcaoFoiChamada(nomeDaFuncao: string) {
-    console.log(`FUÇÃO ${nomeDaFuncao} FOI CHAMADA`);
+    console.log(`FUNÇÃO ${nomeDaFuncao} FOI CHAMADA`);
   }
 }
