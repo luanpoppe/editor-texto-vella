@@ -1,3 +1,4 @@
+import { PaginationPlus } from "./../../../../node_modules/tiptap-pagination-plus/src/PaginationPlus";
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // --- Tiptap Core Extensions ---
 import { StarterKit } from "@tiptap/starter-kit";
@@ -69,5 +70,12 @@ export const tipTapExtensions = [
   }),
   UniqueID.configure({
     types: ["heading", "paragraph"],
+  }),
+  PaginationPlus.configure({
+    pageHeight: 842, // Altura de uma págiona A4 em pixels
+    pageGap: 20, // Gap between pages in pixels
+    pageBreakBackground: "#f9fbfd", // Background color for page gaps
+    pageHeaderHeight: 50, // Height of page header/footer in pixels
+    // footerText: "Made with ❤️ by Romik", // Custom footer text
   }),
 ];

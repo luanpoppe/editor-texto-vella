@@ -41,6 +41,11 @@ import { BubbleMenuWithEditor } from "@/components/BubbleMenu";
 import { tipTapExtensions } from "./tip-tap-extensions";
 import { MainToolbarContent } from "./MainToolbarContent";
 import { ColorHighlightPopoverContent } from "@/components/tiptap-ui/color-highlight-popover/ColorHighlightPopoverContent";
+import {
+  ReceiveParamsFromBubble,
+  SendParamsToBubble,
+} from "@/bubble-integration/bubble-functions.model";
+import { BubbleUtils } from "@/bubble-integration/bubble-integration";
 
 const MobileToolbarContent = ({
   type,
@@ -105,35 +110,37 @@ export function SimpleEditor() {
     }
   }, [isMobile, mobileView]);
 
-  function inicializarEditor(properties: any) {
-    console.log("NOVA BUILD DE 18:11");
-    console.log("a função inicializarEditor foi chamada!!!");
-    editor!.commands.setContent(properties.param1);
-  }
+  const bubbleUtils = new BubbleUtils(editor!);
+  bubbleUtils.loadAllBubbleIntegrations();
 
-  function pedirTextoAtualizado(properties: any) {
-    const texto = editor!.getHTML();
-    console.log("PEDIR TEXTO ATUALIZADO FOI CHAMADO ");
-    console.log("properties.param2: ", properties.param2);
-    // @ts-ignore
-    bubble_fn_enviarTextoAtualizado({
-      output1: texto,
-      output2: properties.param2,
-    });
-  }
+  // function inicializarEditor(properties: ReceiveParamsFromBubble) {
+  //   console.log("NOVA BUILD DE 18:11");
+  //   console.log("a função inicializarEditor foi chamada!!!");
+  //   editor!.commands.setContent(properties.param1);
+  // }
 
-  async function pedirCopiarTexto() {
-    console.log("PEDIR COPIAR TEXTO FOI CHAMADO");
-    const texto = editor!.getHTML();
-    const blob = new Blob([texto], { type: "text/html" });
-    const data = [new ClipboardItem({ "text/html": blob })];
+  // function pedirTextoAtualizado(properties: ReceiveParamsFromBubble) {
+  //   const texto = editor!.getHTML();
+  //   console.log("PEDIR TEXTO ATUALIZADO FOI CHAMADO ");
+  //   console.log("properties.param2: ", properties.param2);
 
-    await navigator.clipboard.write(data);
-  }
+  //   const params = BubbleUtils.createSendParams(texto, properties.param2);
+  //   // @ts-ignore
+  //   bubble_fn_enviarTextoAtualizado(params);
+  // }
 
-  (window as any).inicializarEditor = inicializarEditor;
-  (window as any).pedirTextoAtualizado = pedirTextoAtualizado;
-  (window as any).pedirCopiarTexto = pedirCopiarTexto;
+  // async function pedirCopiarTexto() {
+  //   console.log("PEDIR COPIAR TEXTO FOI CHAMADO");
+  //   const texto = editor!.getHTML();
+  //   const blob = new Blob([texto], { type: "text/html" });
+  //   const data = [new ClipboardItem({ "text/html": blob })];
+
+  //   await navigator.clipboard.write(data);
+  // }
+
+  // (window as any).inicializarEditor = inicializarEditor;
+  // (window as any).pedirTextoAtualizado = pedirTextoAtualizado;
+  // (window as any).pedirCopiarTexto = pedirCopiarTexto;
 
   return (
     <EditorContext.Provider value={{ editor }}>
