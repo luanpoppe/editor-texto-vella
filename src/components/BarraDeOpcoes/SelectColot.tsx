@@ -4,11 +4,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "../tiptap-ui-primitive/popover";
-import {
-  ColorHighlightPopoverColor,
-  ColorHighlightPopoverContent,
-  DEFAULT_HIGHLIGHT_COLORS,
-} from "../tiptap-ui/color-highlight-popover";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { Baseline } from "lucide-react";
 import { Button } from "../tiptap-ui-primitive/button";
@@ -17,6 +12,8 @@ import { Separator } from "../tiptap-ui-primitive/separator";
 import { BanIcon } from "../tiptap-icons/ban-icon";
 import { ColorHighlightButton } from "../tiptap-ui/color-highlight-button";
 import { toggleFormatacao } from "@/utils/toggleFormatacoes";
+import { DEFAULT_HIGHLIGHT_COLORS } from "../tiptap-ui/color-highlight-popover/default-highlight-colors";
+import { ColorHighlightPopoverColor } from "../tiptap-ui/color-highlight-popover/color-highlight-interfaces";
 
 export function SelectColor(props?: any) {
   const { editor } = useCurrentEditor();

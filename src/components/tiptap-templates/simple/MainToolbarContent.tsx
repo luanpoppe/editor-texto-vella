@@ -8,10 +8,8 @@ import {
   ToolbarSeparator,
 } from "@/components/tiptap-ui-primitive/toolbar";
 import { BlockQuoteButton } from "@/components/tiptap-ui/blockquote-button";
-import {
-  ColorHighlightPopover,
-  ColorHighlightPopoverButton,
-} from "@/components/tiptap-ui/color-highlight-popover";
+import { ColorHighlightPopover } from "@/components/tiptap-ui/color-highlight-popover";
+import { ColorHighlightPopoverButton } from "@/components/tiptap-ui/color-highlight-popover/ColorHighlightPopoverButton";
 import { HeadingDropdownMenu } from "@/components/tiptap-ui/heading-dropdown-menu";
 import { LinkButton, LinkPopover } from "@/components/tiptap-ui/link-popover";
 import { ListDropdownMenu } from "@/components/tiptap-ui/list-dropdown-menu";
