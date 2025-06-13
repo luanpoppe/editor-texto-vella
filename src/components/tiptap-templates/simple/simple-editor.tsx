@@ -22,7 +22,6 @@ import "@/components/tiptap-node/image-node/image-node.scss";
 import "@/components/tiptap-node/paragraph-node/paragraph-node.scss";
 
 // --- Tiptap UI ---
-import { ColorHighlightPopoverContent } from "@/components/tiptap-ui/color-highlight-popover";
 import { LinkContent } from "@/components/tiptap-ui/link-popover";
 
 // --- Icons ---
@@ -41,6 +40,7 @@ import "@/components/tiptap-templates/simple/simple-editor.scss";
 import { BubbleMenuWithEditor } from "@/components/BubbleMenu";
 import { tipTapExtensions } from "./tip-tap-extensions";
 import { MainToolbarContent } from "./MainToolbarContent";
+import { ColorHighlightPopoverContent } from "@/components/tiptap-ui/color-highlight-popover/ColorHighlightPopoverContent";
 
 const MobileToolbarContent = ({
   type,
@@ -129,9 +129,6 @@ export function SimpleEditor() {
     const data = [new ClipboardItem({ "text/html": blob })];
 
     await navigator.clipboard.write(data);
-    // await navigator.clipboard.writeText(texto);
-    // @ts-ignore
-    // bubble_fn_enviarCopiarTexto({ output1: texto });
   }
 
   (window as any).inicializarEditor = inicializarEditor;

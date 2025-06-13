@@ -1,5 +1,5 @@
 import { DownloadDocumento } from "@/components/BarraDeOpcoes/DownloadDocumento";
-import { SelectColor } from "@/components/BarraDeOpcoes/SelectColot";
+import { SelectColor } from "@/components/BarraDeOpcoes/SelectColor/SelectColor";
 import { SelectFontFamily } from "@/components/BarraDeOpcoes/SelectFontFamily";
 import { SelectFontSize } from "@/components/BarraDeOpcoes/SelectFontSize";
 import { Spacer } from "@/components/tiptap-ui-primitive/spacer";
