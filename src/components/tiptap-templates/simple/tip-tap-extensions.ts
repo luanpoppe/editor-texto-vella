@@ -1,5 +1,4 @@
 import { PaginationPlus } from "./../../../../node_modules/tiptap-pagination-plus/src/PaginationPlus";
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 // --- Tiptap Core Extensions ---
 import { StarterKit } from "@tiptap/starter-kit";
 import { Image } from "@tiptap/extension-image";
@@ -21,8 +20,10 @@ import FontFamily from "@tiptap/extension-font-family";
 import TextStyle from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import { ImageUploadNode } from "@/components/tiptap-node/image-upload-node/image-upload-node-extension";
+import FileHandler from "@tiptap-pro/extension-file-handler";
 
 import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
+import { ExtensionsConfig } from "./extensions-config";
 
 export const tipTapExtensions = [
   StarterKit,
@@ -49,25 +50,7 @@ export const tipTapExtensions = [
   }),
   TrailingNode,
   Link.configure({ openOnClick: true }),
-  ExportDocx.configure({
-    onCompleteExport: (result: any) => {
-      // setIsLoading(false);
-      //@ts-ignore
-      // const tituloDocumento = bubble_fn_get_titulo_documento();
-      const tituloDocumento = "arquivo-documento";
-
-      const blob = new Blob([result], {
-        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-
-      a.href = url;
-      a.download = `${tituloDocumento ?? "arquivo-documento"}.docx`;
-      a.click();
-      URL.revokeObjectURL(url);
-    },
-  }),
+  ExportDocx.configure(ExtensionsConfig.exportDocx()),
   UniqueID.configure({
     types: ["heading", "paragraph"],
   }),
@@ -78,4 +61,5 @@ export const tipTapExtensions = [
     pageHeaderHeight: 50, // Height of page header/footer in pixels
     // footerText: "Made with ❤️ by Romik", // Custom footer text
   }),
+  FileHandler.configure(ExtensionsConfig.fileHandler()),
 ];

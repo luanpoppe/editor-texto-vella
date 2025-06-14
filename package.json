@@ -21,6 +21,7 @@
     "@radix-ui/react-tabs": "^1.1.2",
     "@tiptap-pro/extension-export": "^2.21.0",
     "@tiptap-pro/extension-export-docx": "^2.18.0-beta.13",
+    "@tiptap-pro/extension-file-handler": "^2.21.4",
     "@tiptap-pro/extension-unique-id": "^2.21.0",
     "@tiptap/extension-bubble-menu": "^2.11.5",
     "@tiptap/extension-color": "^2.14.0",
