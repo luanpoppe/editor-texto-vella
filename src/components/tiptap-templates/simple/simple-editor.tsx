@@ -41,11 +41,9 @@ import { BubbleMenuWithEditor } from "@/components/BubbleMenu/BubbleMenu";
 import { tipTapExtensions } from "./tip-tap-extensions";
 import { MainToolbarContent } from "./MainToolbarContent";
 import { ColorHighlightPopoverContent } from "@/components/tiptap-ui/color-highlight-popover/ColorHighlightPopoverContent";
-import {
-  ReceiveParamsFromBubble,
-  SendParamsToBubble,
-} from "@/bubble-integration/bubble-functions.model";
 import { BubbleUtils } from "@/bubble-integration/bubble-integration";
+import DragHandle from "@tiptap-pro/extension-drag-handle-react";
+import { MoveIcon } from "lucide-react";
 
 const MobileToolbarContent = ({
   type,
@@ -142,43 +140,64 @@ export function SimpleEditor() {
   // (window as any).pedirTextoAtualizado = pedirTextoAtualizado;
   // (window as any).pedirCopiarTexto = pedirCopiarTexto;
 
+  if (!editor) return;
+
   return (
-    <EditorContext.Provider value={{ editor }}>
-      <Toolbar
-        ref={toolbarRef}
-        style={
-          isMobile
-            ? {
-                bottom: `calc(100% - ${windowSize.height - bodyRect.y}px)`,
-              }
-            : {}
-        }
-      >
-        {mobileView === "main" ? (
-          <MainToolbarContent
-            onHighlighterClick={() => setMobileView("highlighter")}
-            onLinkClick={() => setMobileView("link")}
-            isMobile={isMobile}
+    <>
+      <EditorContext.Provider value={{ editor }}>
+        <Toolbar
+          ref={toolbarRef}
+          style={
+            isMobile
+              ? {
+                  bottom: `calc(100% - ${windowSize.height - bodyRect.y}px)`,
+                }
+              : {}
+          }
+        >
+          {mobileView === "main" ? (
+            <MainToolbarContent
+              onHighlighterClick={() => setMobileView("highlighter")}
+              onLinkClick={() => setMobileView("link")}
+              isMobile={isMobile}
+            />
+          ) : (
+            <MobileToolbarContent
+              type={mobileView === "highlighter" ? "highlighter" : "link"}
+              onBack={() => setMobileView("main")}
+            />
+          )}
+        </Toolbar>
+
+        <div className="content-wrapper">
+          <DragHandle editor={editor} className="mt-1 cursor-grab">
+            <MoveIcon size={15} />
+            {/* <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 9h16.5m-16.5 6.75h16.5"
+              />
+            </svg> */}
+          </DragHandle>
+
+          <EditorContent
+            editor={editor}
+            role="presentation"
+            className="simple-editor-content"
           />
-        ) : (
-          <MobileToolbarContent
-            type={mobileView === "highlighter" ? "highlighter" : "link"}
-            onBack={() => setMobileView("main")}
-          />
-        )}
-      </Toolbar>
+        </div>
 
-      <div className="content-wrapper">
-        <EditorContent
-          editor={editor}
-          role="presentation"
-          className="simple-editor-content"
-        />
-      </div>
+        {/* <FloatingMenu editor={null}>This is the floating menu</FloatingMenu> */}
 
-      {/* <FloatingMenu editor={null}>This is the floating menu</FloatingMenu> */}
-
-      <BubbleMenuWithEditor />
-    </EditorContext.Provider>
+        <BubbleMenuWithEditor />
+      </EditorContext.Provider>
+    </>
   );
 }
