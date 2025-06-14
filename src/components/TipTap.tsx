@@ -17,7 +17,7 @@ import { getChatGPTAnswer } from "@/utils/openAI";
 import FontSize from "@/utils/customFontSizeExtension";
 import { BarraDeOpcoes } from "./BarraDeOpcoes/BarraDeOpcoes";
 import FontFamily from "@tiptap/extension-font-family";
-import { BubbleMenuWithEditor } from "./BubbleMenu";
+import { BubbleMenuWithEditor } from "./BubbleMenu/BubbleMenu";
 
 // define your extension array
 const extensions = [

@@ -37,7 +37,7 @@ import { useCursorVisibility } from "@/hooks/use-cursor-visibility";
 // --- Styles ---
 import "@/components/tiptap-templates/simple/simple-editor.scss";
 
-import { BubbleMenuWithEditor } from "@/components/BubbleMenu";
+import { BubbleMenuWithEditor } from "@/components/BubbleMenu/BubbleMenu";
 import { tipTapExtensions } from "./tip-tap-extensions";
 import { MainToolbarContent } from "./MainToolbarContent";
 import { ColorHighlightPopoverContent } from "@/components/tiptap-ui/color-highlight-popover/ColorHighlightPopoverContent";
@@ -178,7 +178,7 @@ export function SimpleEditor() {
 
       {/* <FloatingMenu editor={null}>This is the floating menu</FloatingMenu> */}
 
-      {/* <BubbleMenuWithEditor /> */}
+      <BubbleMenuWithEditor />
     </EditorContext.Provider>
   );
 }

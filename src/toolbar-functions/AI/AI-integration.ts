@@ -1,4 +1,7 @@
-import { AlterarTextoIA } from "@/bubble-integration/bubble-functions.model";
+import {
+  AlterarTextoIA,
+  FuncoesIABubble,
+} from "@/bubble-integration/bubble-functions.model";
 import { SendToBubble } from "@/bubble-integration/send-to-bubble";
 import { TipTapClass } from "@/tip-tap.class";
 import { Editor } from "@tiptap/react";
@@ -11,7 +14,7 @@ export class AIIntegration {
     this.tipTap = new TipTapClass(editor);
   }
 
-  alterarTextoIA() {
+  alterarTextoIA(funcaoBubble: FuncoesIABubble) {
     console.log("alterarTextoIA FOI CHAMADO");
     if (!this.editor) return;
     const tipTap = this.tipTap;
@@ -42,11 +45,7 @@ export class AIIntegration {
     //   },
     // ];
 
-    SendToBubble.alterarTextoIA(
-      textoASerAlterado,
-      "modificar",
-      "melhorarescrita"
-    );
+    SendToBubble.alterarTextoIA(textoASerAlterado, "modificar", funcaoBubble);
   }
 
   adicionarTextoIA() {

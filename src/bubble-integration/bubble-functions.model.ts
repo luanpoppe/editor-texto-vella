@@ -21,5 +21,8 @@ export type ObjetivoChamadaIABubble = "modificar" | "adicionar";
 
 export type FuncoesIABubble =
   | "melhorarescrita"
+  | "maissucinto"
+  | "maisformal"
+  | "aumentartexto"
   | "organizarideias"
   | "bancodeargumento";
