@@ -4,7 +4,6 @@ import { useMemo } from "react";
 
 export function DownloadDocumento() {
   const { editor } = useCurrentEditor();
-  console.log("editor: ", editor);
 
   const aiIntegration = useMemo(() => new AIIntegration(editor!), [editor]);
   // const aiIntegration = new AIIntegration(editor!);
@@ -64,7 +63,9 @@ export function DownloadDocumento() {
 
   return (
     <>
-      <button onClick={() => aiIntegration.alterarTextoIA()}>B1</button>
+      <button onClick={() => aiIntegration.alterarTextoIA("aumentartexto")}>
+        B1
+      </button>
       <button onClick={() => aiIntegration.adicionarTextoIA()}>B2</button>
     </>
   );

@@ -56,11 +56,8 @@ export function BubbleMenuWithEditor() {
                         <CommandGroup key={heading} heading={heading}>
                           {items.map(({ name, onClick }) => {
                             return (
-                              <CommandItem
-                                key={name}
-                                onClick={() => onClick(editor)}
-                              >
-                                {name}
+                              <CommandItem key={name}>
+                                <p onClick={() => onClick(editor)}>{name}</p>
                               </CommandItem>
                             );
                           })}
