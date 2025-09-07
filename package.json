@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "preinstall": "echo $NPMRC_FILE | base64 --decode > .npmrc",
+    "preinstall": "echo '--- [DEBUG] Iniciando a criação do .npmrc...' && echo $NPMRC_FILE | base64 --decode > .npmrc && echo '--- [DEBUG] .npmrc criado com sucesso. Conteúdo (sem o token):' && grep -v '_authToken' .npmrc || echo 'Arquivo .npmrc nao contem outras linhas.' && echo '--- [DEBUG] Finalizado. ---'",
     "dev": "vite",
     "start": "vite",
     "build": "tsc -b && vite build",
