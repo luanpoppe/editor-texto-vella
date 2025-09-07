@@ -11,7 +11,7 @@ export class SendToBubble {
     const params = BubbleUtils.createSendParams(texto, param2);
 
     //@ts-ignore
-    bubble_fn_enviarTextoAtualizado(params);
+    // bubble_fn_enviarTextoAtualizado(params);
   }
 
   static alterarTextoIA(
@@ -34,7 +34,7 @@ export class SendToBubble {
 
   static editorFoiInicializado() {
     //@ts-ignore
-    bubble_fn_editorFoiInicializado();
+    // bubble_fn_editorFoiInicializado();
     console.log("INICIOU APP");
   }
 }
