@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "echo $NPMRC_FILE | base64 --decode > .npmrc",
     "dev": "vite",
     "start": "vite",
     "build": "tsc -b && vite build",
